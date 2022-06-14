@@ -31,12 +31,12 @@ public class BaseTest {
         prop = new Properties();
         InputStream fi = new FileInputStream("./Properties/Global.properties");
         prop.load(fi);
-        String URI = prop.getProperty("stageURL");
+        String URI = prop.getProperty("baseURL");
 
         RestAssured.baseURI = URI;
         userJson = new HashMap<>();
-        userJson.put("name","Rohit");
-        userJson.put("job","QA");
+//        userJson.put("name","Rohit");
+//        userJson.put("job","QA");
     }
 
     @AfterClass
