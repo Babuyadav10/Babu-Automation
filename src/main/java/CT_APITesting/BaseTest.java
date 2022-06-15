@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.Random;
 
 public class BaseTest {
 
@@ -23,7 +24,7 @@ public class BaseTest {
     XSSFWorkbook wb;
     XSSFSheet sh;
     int TotalRowCount;
-    public HashMap<String,Object> userJson;
+   // public HashMap<String,Object> userJson;
 
 
     @BeforeClass
@@ -34,9 +35,17 @@ public class BaseTest {
         String URI = prop.getProperty("baseURL");
 
         RestAssured.baseURI = URI;
-        userJson = new HashMap<>();
+       // userJson = new HashMap<>();
 //        userJson.put("name","Rohit");
 //        userJson.put("job","QA");
+    }
+
+    public String getRandomString(String prefix) {
+
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(1000000);
+        String randomString = prefix + rand_int1;
+        return randomString;
     }
 
     @AfterClass

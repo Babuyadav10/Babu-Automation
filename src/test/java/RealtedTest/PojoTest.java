@@ -13,15 +13,15 @@ public class PojoTest extends BaseTest {
 
     @Test(priority = 0)
     public void userDetails(){
-        TakeTest tt = given().header("Content-Type","application/json")
-                .body(userJson)
-                .when().post("api/users").as(TakeTest.class);
-
-
-        System.out.println(tt.getName());
-        System.out.println(tt.getId());
-        System.out.println(tt.getJob());
-        System.out.println(tt.getCreatedAt());
+//        TakeTest tt = given().header("Content-Type","application/json")
+//                .body(userJson)
+//                .when().post("api/users").as(TakeTest.class);
+//
+//
+//        System.out.println(tt.getName());
+//        System.out.println(tt.getId());
+//        System.out.println(tt.getJob());
+//        System.out.println(tt.getCreatedAt());
     }
 
     @Test(priority = 1)
