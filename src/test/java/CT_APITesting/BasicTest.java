@@ -21,6 +21,7 @@ public class BasicTest extends BaseTest {
 //        int EmailCounts;
         String createdAPIKey;
         String createdAPIName;
+        String mainApiKey= "11e05c7614500a86adb556ad94bcab118afb202d";
 
 
 
@@ -37,7 +38,7 @@ public class BasicTest extends BaseTest {
 
                 String responseBody=given().
 //                        pathParam("appId","208125083d6b2e3d").pathParam("region","us").
-                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").header("Content-Type","application/json").header("Accept","application/json").
+                        header("apiKey",mainApiKey).header("Content-Type","application/json").header("Accept","application/json").
                         body(userJson.toString(1)).
                         when().
                         post("/apikeys").
@@ -78,7 +79,7 @@ public class BasicTest extends BaseTest {
 
                 String responseBody=given().
                         queryParam("scope","authOnly").
-                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                        header("apiKey",mainApiKey).
                         header("Accept","application/json").
                         when().
                         get("/apikeys").
@@ -112,7 +113,7 @@ public class BasicTest extends BaseTest {
         @Test(priority = 2)
         public void getAPI(){
                 String responseBody=given().
-                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                        header("apiKey",mainApiKey).
                         header("Accept","application/json").
                         get("/apikeys/"+createdAPIKey).then().
                         assertThat().statusCode(200).extract().body().asString();
@@ -139,7 +140,7 @@ public class BasicTest extends BaseTest {
 
 
                 String responseBody=given().
-                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                        header("apiKey",mainApiKey).
                         header("Accept","application/json").
                         header("Content-Type","application/json").
                         body(userJson.toString(1)).
@@ -153,6 +154,21 @@ public class BasicTest extends BaseTest {
 
                 Assert.assertEquals(updatedApiKeyName,js.getString("data.name"));
 
+
+
+
+        }
+
+        @Test(priority = 4)
+        public void deleteApiKey()
+
+        {
+                        given().
+                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                        header("Accept","application/json").
+                        when().
+                        delete("/apikeys/"+createdAPIKey).
+                        then().assertThat().statusCode(200);
 
 
 
