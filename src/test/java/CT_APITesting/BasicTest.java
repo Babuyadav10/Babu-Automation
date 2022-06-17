@@ -55,6 +55,7 @@ public class BasicTest extends BaseTest {
 
                PathFinder(responseBody);
                createdAPIKey = js.getString("data.apiKey");
+
                createdAPIName=js.getString("data.name");
 
                System.out.println(createdAPIKey);
@@ -84,8 +85,11 @@ public class BasicTest extends BaseTest {
                         then().
                         assertThat().statusCode(200).extract().body().asString();
 
+                System.out.println(responseBody);
+
                 PathFinder(responseBody);
                 Assert.assertEquals(js.getString("data[0].apiKey"),createdAPIKey);
+
 //
 //                for(int j=0;j<emailValues.size();j++) {
 //                        String responseLogin = given().body("{\n" +
@@ -113,6 +117,8 @@ public class BasicTest extends BaseTest {
                         get("/apikeys/"+createdAPIKey).then().
                         assertThat().statusCode(200).extract().body().asString();
 
+                System.out.println(responseBody);
+
                 PathFinder(responseBody);
 
                 Assert.assertEquals(createdAPIName,js.getString("data.name"));
@@ -122,7 +128,30 @@ public class BasicTest extends BaseTest {
 
         @Test(priority = 3)
         public void updateApi(){
+
+                String updatedApiKeyName= getRandomString("NewApiKeyName");
+
+
+
+                JSONObject userJson = new JSONObject();
+                userJson.put("name",updatedApiKeyName);
+                userJson.put("scope","authOnly");
+
+
                 String responseBody=given().
+                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                        header("Accept","application/json").
+                        header("Content-Type","application/json").
+                        body(userJson.toString(1)).
+                        when().
+                        put("/apikeys/"+createdAPIKey).then().
+                        assertThat().statusCode(200).extract().body().asString();
+
+                System.out.println(responseBody);
+
+                PathFinder(responseBody);
+
+                Assert.assertEquals(updatedApiKeyName,js.getString("data.name"));
 
 
 
