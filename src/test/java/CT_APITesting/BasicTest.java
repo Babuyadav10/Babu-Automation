@@ -20,6 +20,7 @@ public class BasicTest extends BaseTest {
 //        ArrayList<String> emailValues = new ArrayList<String>();
 //        int EmailCounts;
         String createdAPIKey;
+        String createdAPIName;
 
 
 
@@ -54,6 +55,8 @@ public class BasicTest extends BaseTest {
 
                PathFinder(responseBody);
                createdAPIKey = js.getString("data.apiKey");
+               createdAPIName=js.getString("data.name");
+
                System.out.println(createdAPIKey);
 //                EmailCounts = js.getInt("per_page");
 //
@@ -99,6 +102,30 @@ public class BasicTest extends BaseTest {
 //                }
 
                 //System.out.println("ResponseBody:- "+responseLogin);
+
+        }
+
+        @Test(priority = 2)
+        public void getAPI(){
+                String responseBody=given().
+                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                        header("Accept","application/json").
+                        get("/apikeys/"+createdAPIKey).then().
+                        assertThat().statusCode(200).extract().body().asString();
+
+                PathFinder(responseBody);
+
+                Assert.assertEquals(createdAPIName,js.getString("data.name"));
+
+
+        }
+
+        @Test(priority = 3)
+        public void updateApi(){
+                String responseBody=given().
+
+
+
 
         }
 }
