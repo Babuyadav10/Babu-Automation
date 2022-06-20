@@ -13,20 +13,22 @@ public class RolesTest extends BaseTest {
 //        String Email,AccessToken;
 //        ArrayList<String> emailValues = new ArrayList<String>();
 //        int EmailCounts;
-        String createdAPIKey;
-        String createdAPIName;
-        String mainApiKey= "11e05c7614500a86adb556ad94bcab118afb202d";
+        String createdRole;
+        String createdRoleName;
+        String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
 
 
 
         @Test(priority = 0)
         public void createRoles(){
 
-                String apiKeyname=getRandomString("apiKeyName");
+                String role=getRandomString("roleID");
+                String roleName= getRandomString("roleName");
 
                 JSONObject userJson = new JSONObject();
-                userJson.put("name",apiKeyname);
-                userJson.put("scope","authOnly");
+                userJson.put("role",role);
+                userJson.put("name",roleName);
+                userJson.put("description","anim amet voluptate non");
 
 
 
@@ -35,7 +37,7 @@ public class RolesTest extends BaseTest {
                         header("apiKey",mainApiKey).header("Content-Type","application/json").header("Accept","application/json").
                         body(userJson.toString(1)).
                         when().
-                        post("/apikeys").
+                        post("/roles").
                         then().
                         assertThat().statusCode(200).extract().body().asString();
 
@@ -49,11 +51,11 @@ public class RolesTest extends BaseTest {
 //                        .then().assertThat().statusCode(200).body("page",equalTo(2)).extract().body().asString();
 
                PathFinder(responseBody);
-               createdAPIKey = js.getString("data.apiKey");
+               createdRole = js.getString("data.role");
 
-               createdAPIName=js.getString("data.name");
+               createdRoleName=js.getString("data.name");
 
-               System.out.println(createdAPIKey);
+               System.out.println(createdRole);
 //                EmailCounts = js.getInt("per_page");
 //
 //                for (int i=0;i<EmailCounts;i++){
@@ -72,18 +74,17 @@ public class RolesTest extends BaseTest {
         public void listRoles(){
 
                 String responseBody=given().
-                        queryParam("scope","authOnly").
                         header("apiKey",mainApiKey).
                         header("Accept","application/json").
                         when().
-                        get("/apikeys").
+                        get("/roles").
                         then().
                         assertThat().statusCode(200).extract().body().asString();
 
                 System.out.println(responseBody);
 
                 PathFinder(responseBody);
-                Assert.assertEquals(js.getString("data[0].apiKey"),createdAPIKey);
+                Assert.assertEquals(js.getString("data[0].role"),createdRole);
 
 //
 //                for(int j=0;j<emailValues.size();j++) {
@@ -109,14 +110,14 @@ public class RolesTest extends BaseTest {
                 String responseBody=given().
                         header("apiKey",mainApiKey).
                         header("Accept","application/json").
-                        get("/apikeys/"+createdAPIKey).then().
+                        get("/roles/"+createdRole).then().
                         assertThat().statusCode(200).extract().body().asString();
 
                 System.out.println(responseBody);
 
                 PathFinder(responseBody);
 
-                Assert.assertEquals(createdAPIName,js.getString("data.name"));
+                Assert.assertEquals(createdRole,js.getString("data.role"));
 
 
         }
@@ -124,13 +125,13 @@ public class RolesTest extends BaseTest {
         @Test(priority = 3)
         public void updateRoles(){
 
-                String updatedApiKeyName= getRandomString("NewApiKeyName");
+                String updatedRoleName= getRandomString("newRoleName");
 
 
 
                 JSONObject userJson = new JSONObject();
-                userJson.put("name",updatedApiKeyName);
-                userJson.put("scope","authOnly");
+                userJson.put("name",updatedRoleName);
+                userJson.put("description","test descriptin of update role"+updatedRoleName);
 
 
                 String responseBody=given().
@@ -139,14 +140,14 @@ public class RolesTest extends BaseTest {
                         header("Content-Type","application/json").
                         body(userJson.toString(1)).
                         when().
-                        put("/apikeys/"+createdAPIKey).then().
+                        put("/roles/"+createdRole).then().
                         assertThat().statusCode(200).extract().body().asString();
 
                 System.out.println(responseBody);
 
                 PathFinder(responseBody);
 
-                Assert.assertEquals(updatedApiKeyName,js.getString("data.name"));
+                Assert.assertEquals(updatedRoleName,js.getString("data.name"));
 
 
 
@@ -157,11 +158,11 @@ public class RolesTest extends BaseTest {
         public void deleteRoles()
 
         {
-                        given().
-                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
+                      given().
+                        header("apiKey",mainApiKey).
                         header("Accept","application/json").
                         when().
-                        delete("/apikeys/"+createdAPIKey).
+                        delete("/roles/"+createdRole).
                         then().assertThat().statusCode(200);
 
 
