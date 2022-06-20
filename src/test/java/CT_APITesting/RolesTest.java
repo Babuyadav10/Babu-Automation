@@ -1,18 +1,12 @@
 package CT_APITesting;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
-import io.restassured.RestAssured;
-import netscape.javascript.JSObject;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import static io.restassured.RestAssured.given;
 
-public class BasicTest extends BaseTest {
+public class RolesTest extends BaseTest {
 
         //public HashMap<String,Object> userJson;
 
@@ -21,12 +15,12 @@ public class BasicTest extends BaseTest {
 //        int EmailCounts;
         String createdAPIKey;
         String createdAPIName;
-        String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
+        String mainApiKey= "11e05c7614500a86adb556ad94bcab118afb202d";
 
 
 
         @Test(priority = 0)
-        public void createApiKey(){
+        public void createRoles(){
 
                 String apiKeyname=getRandomString("apiKeyName");
 
@@ -75,7 +69,7 @@ public class BasicTest extends BaseTest {
         }
 
         @Test(priority = 1)
-        public void listApiKeys(){
+        public void listRoles(){
 
                 String responseBody=given().
                         queryParam("scope","authOnly").
@@ -111,7 +105,7 @@ public class BasicTest extends BaseTest {
         }
 
         @Test(priority = 2)
-        public void getAPI(){
+        public void getRoles(){
                 String responseBody=given().
                         header("apiKey",mainApiKey).
                         header("Accept","application/json").
@@ -128,7 +122,7 @@ public class BasicTest extends BaseTest {
         }
 
         @Test(priority = 3)
-        public void updateApi(){
+        public void updateRoles(){
 
                 String updatedApiKeyName= getRandomString("NewApiKeyName");
 
@@ -160,11 +154,11 @@ public class BasicTest extends BaseTest {
         }
 
         @Test(priority = 4)
-        public void deleteApiKey()
+        public void deleteRoles()
 
         {
                         given().
-                        header("apiKey",mainApiKey).
+                        header("apiKey","11e05c7614500a86adb556ad94bcab118afb202d").
                         header("Accept","application/json").
                         when().
                         delete("/apikeys/"+createdAPIKey).
