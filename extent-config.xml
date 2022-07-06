@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<extentreports>
+	<configuration>
+		<theme>dark</theme>
+
+		<documentTitle>CometChat API Automation Results</documentTitle>
+
+		<!-- report name - displayed at top-nav -->
+		<reportName>
+            <![CDATA[
+                <img src="../../" />
+            ]]>
+		</reportName>
+		<testViewChartLocation>top</testViewChartLocation>
+
+		<!-- report headline - displayed at top-nav, after reportHeadline -->
+		<reportHeadline></reportHeadline>
+
+		<!-- custom javascript -->
+		<scripts>
+            <![CDATA[
+                $(document).ready(function() {
+
+                });
+            ]]>
+		</scripts>
+
+		<!-- custom styles -->
+		<styles>
+            <![CDATA[
+                .report-name { padding-left: 30px; } .report-name > img { float: left;height: 90%;margin-left: 30px;margin-top: 2px;width: auto; }
+            ]]>
+		</styles>
+
+	</configuration>
+</extentreports>

@@ -77,7 +77,6 @@ public class AuthTokenTest extends BaseTest {
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("data.authToken"),createdAuthToken);
 
-      //  Assert.assertEquals(str.substring(1,str.length() - 1),createdUserId);
 
 
 

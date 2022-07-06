@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression_Test">
+
+	<test name="BasicTest">
+		
+		<classes>
+			<class name="CT_APITesting.BasicTest" />
+
+			
+		</classes>
+	</test>
+	<test name="RolesTest">
+
+		<classes>
+			<class name="CT_APITesting.RolesTest" ></class>
+		</classes>
+	</test>
+	<test name="UsersTest">
+
+		<classes>
+			<class name="CT_APITesting.UsersTest" ></class>
+		</classes>
+	</test>
+	<test name="AuthTokenTest">
+
+		<classes>
+			<class name="CT_APITesting.AuthTokenTest" ></class>
+		</classes>
+	</test>
+
+</suite>
