@@ -23,10 +23,8 @@
 		</classes>
 	</test>
 	<test name="AuthTokenTest">
-
 		<classes>
 			<class name="CT_APITesting.AuthTokenTest" ></class>
 		</classes>
 	</test>
-
 </suite>
