@@ -19,7 +19,7 @@ public class RolesTest extends BaseTest {
 
 
 
-        @Test(priority = 0)
+        @Test(priority = 0,description = "Verify create roles functionality")
         public void createRoles(){
 
                 String role=getRandomString("roleID");
@@ -45,7 +45,7 @@ public class RolesTest extends BaseTest {
 
         }
 
-        @Test(priority = 1)
+        @Test(priority = 1,description = "Verify list roles functionality")
         public void listRoles(){
 
                 String responseBody=given().
@@ -62,7 +62,7 @@ public class RolesTest extends BaseTest {
                 Assert.assertEquals(js.getString("data[0].role"),createdRole);
         }
 
-        @Test(priority = 2)
+        @Test(priority = 2,description = "verify get roles functionality")
         public void getRoles(){
                 String responseBody=given().
                         header("apiKey",mainApiKey).
@@ -79,7 +79,7 @@ public class RolesTest extends BaseTest {
 
         }
 
-        @Test(priority = 3)
+        @Test(priority = 3,description = "Verify update roles functionality")
         public void updateRoles(){
 
                 String updatedRoleName= getRandomString("newRoleName");
@@ -111,7 +111,7 @@ public class RolesTest extends BaseTest {
 
         }
 
-        @Test(priority = 4)
+        @Test(priority = 4,description = "Verify delete roles functionality")
         public void deleteRoles()
 
         {

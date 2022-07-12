@@ -11,7 +11,7 @@ public class UsersTest extends BaseTest {
     String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
     String responseBody;
 
-    @Test(priority = 0)
+    @Test(priority = 0,description = "Verity create users functionality")
     public void createUser(){
         String userID=getRandomString("userID");
         String username= getRandomString("UserName");
@@ -36,7 +36,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1,description = "Verify List users functionality")
     public void listUsers()
     {
 
@@ -57,7 +57,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2,description = "Verify deactivate users functionality")
     public void deactivateUsers()
     {
         JSONObject userJson = new JSONObject();
@@ -82,7 +82,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3,description = "Verify reactivate users functionality")
     public void reactivateUsers(){
 
 
@@ -105,7 +105,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4,description = "Verify get users functionality")
     public void getUsers(){
         String responseBody=given().
                 header("apiKey",mainApiKey).
@@ -125,7 +125,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5,description = "Verify update roles functionality")
     public void updateRoles(){
 
         /*String updatedRoleName= getRandomString("newRoleName");
@@ -157,7 +157,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6,description = "Verify delete users functionality")
     public void deleteUsers()
 
     {
@@ -178,7 +178,7 @@ public class UsersTest extends BaseTest {
         responseBody=s;
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7,description = "Verify block users functionality")
     public void blockUsers()
     {
         PathFinder(responseBody);
@@ -198,7 +198,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8,description = "Verify list of blocked users ")
     public void listOfBlockedUsers()
     {
         PathFinder(responseBody);
@@ -215,7 +215,7 @@ public class UsersTest extends BaseTest {
     }
 
 
-    @Test(priority = 9)
+    @Test(priority = 9,description = "Verify unblock users ")
     public void unBlockUsers()
     {
         PathFinder(responseBody);
