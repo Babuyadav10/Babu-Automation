@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 13.55 s <<< FAILURE! - in TestSuite
+userDetails1(RealtedTest.PojoTest)  Time elapsed: 1.863 s  <<< FAILURE!
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: 
+Unrecognized field "error" (class CT_APITesting.CriticalJsonTest), not marked as ignorable (6 known properties: "per_page", "ad", "total", "total_pages", "data", "page"])
+ at [Source: (String)"{"error":{"message":"The API endpoint is invalid. Please verify the API call.","devMessage":"The endpoint of the API is invalid. Please have the API call checked.","source":"chat-api","code":"ERR_API_NOT_FOUND"}}"; line: 1, column: 11] (through reference chain: CT_APITesting.CriticalJsonTest["error"])
+	at RealtedTest.PojoTest.userDetails1(PojoTest.java:30)
+
