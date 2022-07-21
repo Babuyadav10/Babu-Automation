@@ -3,28 +3,19 @@
 <suite name="Regression_Test">
 
 	<test name="BasicTest">
-		
+		<groups>
+			<run>
+				<include name="regression"/>
+			</run>
+		</groups>
+
 		<classes>
 			<class name="CT_APITesting.BasicTest" />
-
+			<class name="CT_APITesting.RolesTest" />
+			<class name="CT_APITesting.UsersTest" />
+			<class name="CT_APITesting.AuthTokenTest" />
 			
 		</classes>
 	</test>
-	<test name="RolesTest">
 
-		<classes>
-			<class name="CT_APITesting.RolesTest" ></class>
-		</classes>
-	</test>
-	<test name="UsersTest">
-
-		<classes>
-			<class name="CT_APITesting.UsersTest" ></class>
-		</classes>
-	</test>
-	<test name="AuthTokenTest">
-		<classes>
-			<class name="CT_APITesting.AuthTokenTest" ></class>
-		</classes>
-	</test>
 </suite>

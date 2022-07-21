@@ -8,53 +8,44 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="7">Surefire suite</th></tr>
-<tr><td><a href="#t0">Surefire test</a></td><td class="num">5</td><td class="num">0</td><td class="num attn">1</td><td class="num">13,105</td><td></td><td></td></tr>
+<tr><th colspan="7">Regression_Test</th></tr>
+<tr><td><a href="#t0">BasicTest</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">10,727</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">RolesTest</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">7,200</td><td></td><td></td></tr>
+<tr><td><a href="#t2">UsersTest</a></td><td class="num">10</td><td class="num">0</td><td class="num">0</td><td class="num">12,605</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t3">AuthTokenTest</a></td><td class="num">7</td><td class="num">0</td><td class="num">0</td><td class="num">6,969</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">27</th><th class="num">0</th><th class="num">0</th><th class="num">37,501</th><th colspan="2"></th></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">RealtedTest.PojoTest</td><td><a href="#m0">userDetails1</a></td><td rowspan="1">1658219928429</td><td rowspan="1">1852</td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">CT_APITesting.AuthTokenTest</td><td><a href="#m1">createAuthToken</a></td><td rowspan="1">1658219925383</td><td rowspan="1">2996</td></tr><tr class="passedodd"><td rowspan="1">CT_APITesting.BasicTest</td><td><a href="#m2">createApiKey</a></td><td rowspan="1">1658219923926</td><td rowspan="1">1396</td></tr><tr class="passedeven"><td rowspan="1">CT_APITesting.RolesTest</td><td><a href="#m3">createRoles</a></td><td rowspan="1">1658219922435</td><td rowspan="1">1429</td></tr><tr class="passedodd"><td rowspan="1">CT_APITesting.UsersTest</td><td><a href="#m4">createUser</a></td><td rowspan="1">1658219918095</td><td rowspan="1">4253</td></tr><tr class="passedeven"><td rowspan="1">RealtedTest.PojoTest</td><td><a href="#m5">userDetails</a></td><td rowspan="1">1658219917878</td><td rowspan="1">1</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Regression_Test</th></tr></tbody><tbody id="t0"><tr><th colspan="4">BasicTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">CT_APITesting.BasicTest</td><td><a href="#m0">createApiKey</a></td><td rowspan="1">1658401653940</td><td rowspan="1">3474</td></tr><tr class="passedeven"><td><a href="#m1">deleteApiKey</a></td><td rowspan="1">1658401662559</td><td rowspan="1">1392</td></tr><tr class="passedeven"><td><a href="#m2">getAPI</a></td><td rowspan="1">1658401659411</td><td rowspan="1">1481</td></tr><tr class="passedeven"><td><a href="#m3">listApiKeys</a></td><td rowspan="1">1658401657643</td><td rowspan="1">1698</td></tr><tr class="passedeven"><td><a href="#m4">updateApi</a></td><td rowspan="1">1658401660952</td><td rowspan="1">1540</td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">RolesTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">CT_APITesting.RolesTest</td><td><a href="#m5">createRoles</a></td><td rowspan="1">1658401664170</td><td rowspan="1">1558</td></tr><tr class="passedeven"><td><a href="#m6">deleteRoles</a></td><td rowspan="1">1658401669917</td><td rowspan="1">1355</td></tr><tr class="passedeven"><td><a href="#m7">getRoles</a></td><td rowspan="1">1658401667163</td><td rowspan="1">1404</td></tr><tr class="passedeven"><td><a href="#m8">listRoles</a></td><td rowspan="1">1658401665791</td><td rowspan="1">1321</td></tr><tr class="passedeven"><td><a href="#m9">updateRoles</a></td><td rowspan="1">1658401668615</td><td rowspan="1">1270</td></tr></tbody>
+<tbody id="t2"><tr><th colspan="4">UsersTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="10">CT_APITesting.UsersTest</td><td><a href="#m10">blockUsers</a></td><td rowspan="1">1658401679915</td><td rowspan="1">1257</td></tr><tr class="passedeven"><td><a href="#m11">createUser</a></td><td rowspan="1">1658401671365</td><td rowspan="1">1480</td></tr><tr class="passedeven"><td><a href="#m12">deactivateUsers</a></td><td rowspan="1">1658401674150</td><td rowspan="1">1231</td></tr><tr class="passedeven"><td><a href="#m13">deleteUsers</a></td><td rowspan="1">1658401678604</td><td rowspan="1">1268</td></tr><tr class="passedeven"><td><a href="#m14">getUsers</a></td><td rowspan="1">1658401676988</td><td rowspan="1">1517</td></tr><tr class="passedeven"><td><a href="#m15">listOfBlockedUsers</a></td><td rowspan="1">1658401681213</td><td rowspan="1">1331</td></tr><tr class="passedeven"><td><a href="#m16">listUsers</a></td><td rowspan="1">1658401672884</td><td rowspan="1">1243</td></tr><tr class="passedeven"><td><a href="#m17">reactivateUsers</a></td><td rowspan="1">1658401675416</td><td rowspan="1">1526</td></tr><tr class="passedeven"><td><a href="#m18">unBlockUsers</a></td><td rowspan="1">1658401682605</td><td rowspan="1">1295</td></tr><tr class="passedeven"><td><a href="#m19">updateRoles</a></td><td rowspan="1">1658401678565</td><td rowspan="1">0</td></tr></tbody>
+<tbody id="t3"><tr><th colspan="4">AuthTokenTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="7">CT_APITesting.AuthTokenTest</td><td><a href="#m20">createAuthToken</a></td><td rowspan="1">1658401683976</td><td rowspan="1">2818</td></tr><tr class="passedeven"><td><a href="#m21">deleteAuthToken</a></td><td rowspan="1">1658401689691</td><td rowspan="1">1201</td></tr><tr class="passedeven"><td><a href="#m22">getAuthToken</a></td><td rowspan="1">1658401688232</td><td rowspan="1">1370</td></tr><tr class="passedeven"><td><a href="#m23">getRoles</a></td><td rowspan="1">1658401689656</td><td rowspan="1">0</td></tr><tr class="passedeven"><td><a href="#m24">listAuthtoken</a></td><td rowspan="1">1658401686848</td><td rowspan="1">1334</td></tr><tr class="passedeven"><td><a href="#m25">reactivateUsers</a></td><td rowspan="1">1658401689635</td><td rowspan="1">0</td></tr><tr class="passedeven"><td><a href="#m26">updateRoles</a></td><td rowspan="1">1658401689672</td><td rowspan="1">0</td></tr></tbody>
 </table>
-<h2>Surefire test</h2><h3 id="m0">RealtedTest.PojoTest#userDetails1</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field &quot;error&quot; (class CT_APITesting.CriticalJsonTest), not marked as ignorable (6 known properties: &quot;per_page&quot;, &quot;ad&quot;, &quot;total&quot;, &quot;total_pages&quot;, &quot;data&quot;, &quot;page&quot;])
- at [Source: (String)&quot;{&quot;error&quot;:{&quot;message&quot;:&quot;The API endpoint is invalid. Please verify the API call.&quot;,&quot;devMessage&quot;:&quot;The endpoint of the API is invalid. Please have the API call checked.&quot;,&quot;source&quot;:&quot;chat-api&quot;,&quot;code&quot;:&quot;ERR_API_NOT_FOUND&quot;}}&quot;; line: 1, column: 11] (through reference chain: CT_APITesting.CriticalJsonTest[&quot;error&quot;])
-	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
-	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
-	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1604)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1582)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:299)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
-	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4524)
-	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3466)
-	at com.fasterxml.jackson.databind.ObjectMapper$readValue$0.call(Unknown Source)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
-	at io.restassured.internal.path.json.mapping.JsonPathJackson2ObjectDeserializer.deserialize(JsonPathJackson2ObjectDeserializer.groovy:46)
-	at io.restassured.path.json.mapping.JsonPathObjectDeserializer$deserialize.call(Unknown Source)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
-	at io.restassured.internal.mapping.Jackson2Mapper.deserialize(Jackson2Mapper.groovy:58)
-	at io.restassured.mapper.ObjectMapper$deserialize.call(Unknown Source)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
-	at io.restassured.internal.mapping.ObjectMapping.parseWithJackson2(ObjectMapping.groovy:238)
-	at io.restassured.internal.mapping.ObjectMapping$parseWithJackson2$0.callStatic(Unknown Source)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallStatic(CallSiteArray.java:55)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:217)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:240)
-	at io.restassured.internal.mapping.ObjectMapping.deserialize(ObjectMapping.groovy:59)
-	at io.restassured.internal.mapping.ObjectMapping$deserialize.call(Unknown Source)
-	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
-	at io.restassured.internal.RestAssuredResponseOptionsGroovyImpl.as(RestAssuredResponseOptionsGroovyImpl.groovy:226)
-	at io.restassured.internal.RestAssuredResponseOptionsImpl.as(RestAssuredResponseOptionsImpl.java:169)
-	at RealtedTest.PojoTest.userDetails1(PojoTest.java:30)
-... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">CT_APITesting.AuthTokenTest#createAuthToken</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">CT_APITesting.BasicTest#createApiKey</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">CT_APITesting.RolesTest#createRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">CT_APITesting.UsersTest#createUser</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">RealtedTest.PojoTest#userDetails</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>BasicTest</h2><h3 id="m0">CT_APITesting.BasicTest#createApiKey</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">CT_APITesting.BasicTest#deleteApiKey</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">CT_APITesting.BasicTest#getAPI</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">CT_APITesting.BasicTest#listApiKeys</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">CT_APITesting.BasicTest#updateApi</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>RolesTest</h2><h3 id="m5">CT_APITesting.RolesTest#createRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">CT_APITesting.RolesTest#deleteRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">CT_APITesting.RolesTest#getRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">CT_APITesting.RolesTest#listRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">CT_APITesting.RolesTest#updateRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>UsersTest</h2><h3 id="m10">CT_APITesting.UsersTest#blockUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">CT_APITesting.UsersTest#createUser</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">CT_APITesting.UsersTest#deactivateUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">CT_APITesting.UsersTest#deleteUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">CT_APITesting.UsersTest#getUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">CT_APITesting.UsersTest#listOfBlockedUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">CT_APITesting.UsersTest#listUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m17">CT_APITesting.UsersTest#reactivateUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m18">CT_APITesting.UsersTest#unBlockUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m19">CT_APITesting.UsersTest#updateRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>AuthTokenTest</h2><h3 id="m20">CT_APITesting.AuthTokenTest#createAuthToken</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m21">CT_APITesting.AuthTokenTest#deleteAuthToken</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m22">CT_APITesting.AuthTokenTest#getAuthToken</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m23">CT_APITesting.AuthTokenTest#getRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m24">CT_APITesting.AuthTokenTest#listAuthtoken</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m25">CT_APITesting.AuthTokenTest#reactivateUsers</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m26">CT_APITesting.AuthTokenTest#updateRoles</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
