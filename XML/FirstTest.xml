@@ -3,12 +3,6 @@
 <suite name="Regression_Test">
 
 	<test name="BasicTest">
-		<groups>
-			<run>
-				<include name="regression"/>
-			</run>
-		</groups>
-
 		<classes>
 			<class name="CT_APITesting.BasicTest" />
 			<class name="CT_APITesting.RolesTest" />
