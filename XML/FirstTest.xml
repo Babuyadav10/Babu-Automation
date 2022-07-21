@@ -5,10 +5,6 @@
 	<test name="BasicTest">
 		<classes>
 			<class name="CT_APITesting.BasicTest" />
-			<class name="CT_APITesting.RolesTest" />
-			<class name="CT_APITesting.UsersTest" />
-			<class name="CT_APITesting.AuthTokenTest" />
-			
 		</classes>
 	</test>
 
