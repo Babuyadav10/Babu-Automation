@@ -2,9 +2,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Regression_Test">
 
-	<test name="BasicTest">
+	<test name="BasicTest" parallel="false">
 		<classes>
 			<class name="CT_APITesting.BasicTest" />
+			<class name="CT_APITesting.RolesTest" />
+			<class name="CT_APITesting.UsersTest"></class>
+			<class name="CT_APITesting.AuthTokenTest"></class>
 		</classes>
 	</test>
 

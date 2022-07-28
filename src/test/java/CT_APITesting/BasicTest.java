@@ -25,7 +25,7 @@ public class BasicTest extends BaseTest {
 
 
 
-        @Test(priority = 0,description = "Verify if user can create an API key")
+        @Test(description = "Verify if user can create an API key")
         public void createApiKey(){
 
                 String apiKeyname=getRandomString("apiKeyName");
@@ -74,7 +74,7 @@ public class BasicTest extends BaseTest {
 //                System.out.println("**********:- "+emailValues);
         }
 
-        @Test(priority = 1,description = "verify if user is able to list all the API keys associated with the app")
+        @Test(description = "verify if user is able to list all the API keys associated with the app",dependsOnMethods = {"createApiKey"})
         public void listApiKeys(){
 
                 String responseBody=given().
@@ -110,7 +110,7 @@ public class BasicTest extends BaseTest {
 
         }
 
-        @Test(priority = 2,description = "verify if user can retrieve an API key")
+        @Test(description = "verify if user can retrieve an API key",dependsOnMethods = {"listApiKeys"})
         public void getAPI(){
                 String responseBody=given().
                         header("apiKey",mainApiKey).
@@ -127,7 +127,7 @@ public class BasicTest extends BaseTest {
 
         }
 
-        @Test(priority = 3,description = "verify if user can update an API key")
+        @Test(description = "verify if user can update an API key",dependsOnMethods = {"getAPI"})
         public void updateApi(){
 
                 String updatedApiKeyName= getRandomString("NewApiKeyName");
@@ -159,7 +159,7 @@ public class BasicTest extends BaseTest {
 
         }
 
-        @Test(priority = 4,description = "verify if user can delete an API key")
+        @Test(description = "verify if user can delete an API key",dependsOnMethods = {"updateApi"})
         public void deleteApiKey()
 
         {

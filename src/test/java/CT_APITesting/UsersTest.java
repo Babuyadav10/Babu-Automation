@@ -11,7 +11,7 @@ public class UsersTest extends BaseTest {
     String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
     String responseBody;
 
-    @Test(priority = 0,description = "Verity create users functionality")
+    @Test(description = "Verity create users functionality")
     public void createUser(){
         String userID=getRandomString("userID");
         String username= getRandomString("UserName");
@@ -36,7 +36,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 1,description = "Verify List users functionality")
+    @Test(description = "Verify List users functionality",dependsOnMethods = {"createUser"})
     public void listUsers()
     {
 
@@ -57,7 +57,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 2,description = "Verify deactivate users functionality")
+    @Test(description = "Verify deactivate users functionality",dependsOnMethods = {"listUsers"})
     public void deactivateUsers()
     {
         JSONObject userJson = new JSONObject();
@@ -82,7 +82,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 3,description = "Verify reactivate users functionality")
+    @Test(description = "Verify reactivate users functionality",dependsOnMethods = {"deactivateUsers"})
     public void reactivateUsers(){
 
 
@@ -105,7 +105,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 4,description = "Verify get users functionality")
+    @Test(description = "Verify get users functionality",dependsOnMethods = {"reactivateUsers"})
     public void getUsers(){
         String responseBody=given().
                 header("apiKey",mainApiKey).
@@ -125,7 +125,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 5,description = "Verify update roles functionality")
+    @Test(description = "Verify update roles functionality",dependsOnMethods = {"getUsers"})
     public void updateRoles(){
 
         /*String updatedRoleName= getRandomString("newRoleName");
@@ -157,7 +157,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 6,description = "Verify delete users functionality")
+    @Test(description = "Verify delete users functionality",dependsOnMethods = {"updateRoles"})
     public void deleteUsers()
 
     {
@@ -178,7 +178,7 @@ public class UsersTest extends BaseTest {
         responseBody=s;
     }
 
-    @Test(priority = 7,description = "Verify block users functionality")
+    @Test(description = "Verify block users functionality",dependsOnMethods = {"deleteUsers"})
     public void blockUsers()
     {
         PathFinder(responseBody);
@@ -198,7 +198,7 @@ public class UsersTest extends BaseTest {
 
     }
 
-    @Test(priority = 8,description = "Verify list of blocked users ")
+    @Test(description = "Verify list of blocked users ",dependsOnMethods = {"blockUsers"})
     public void listOfBlockedUsers()
     {
         PathFinder(responseBody);
@@ -215,7 +215,7 @@ public class UsersTest extends BaseTest {
     }
 
 
-    @Test(priority = 9,description = "Verify unblock users ")
+    @Test(description = "Verify unblock users ",dependsOnMethods = {"listOfBlockedUsers"})
     public void unBlockUsers()
     {
         PathFinder(responseBody);
