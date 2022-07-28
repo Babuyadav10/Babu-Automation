@@ -185,7 +185,7 @@
           <version>2.22.0</version>
           <configuration>
             <suiteXmlFiles>
-              <suiteXmlFile>/Users/imransayyed/Work/RestApiAutomation/RestAPITest/XML/FirstTest.xml</suiteXmlFile>
+              <suiteXmlFile>/var/lib/jenkins/workspace/RunChatApiTest/XML/FirstTest.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>
