@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Regression_Test">
+              <span class="suite-name border-passed">Regression_Test</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Regression_Test">
+                    <span>FirstTest.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Regression_Test">
+                    <span class="test-stats">4 tests</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Regression_Test">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Regression_Test">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Regression_Test">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Regression_Test">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Regression_Test">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">27 methods,   27 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Regression_Test" class="hide-methods passed suite-Regression_Test"> (hide)</a> <!-- hide-methods passed suite-Regression_Test -->
+                      <a href="#" panel-name="suite-Regression_Test" class="show-methods passed suite-Regression_Test"> (show)</a> <!-- show-methods passed suite-Regression_Test -->
+                    </span>
+                    <div class="method-list-content passed suite-Regression_Test">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="blockUsers">blockUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.BasicTest" hash-for-method="createApiKey">createApiKey</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="createAuthToken">createAuthToken</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.RolesTest" hash-for-method="createRoles">createRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="createUser">createUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="deactivateUsers">deactivateUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.BasicTest" hash-for-method="deleteApiKey">deleteApiKey</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="deleteAuthToken">deleteAuthToken</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.RolesTest" hash-for-method="deleteRoles">deleteRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="deleteUsers">deleteUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.BasicTest" hash-for-method="getAPI">getAPI</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="getAuthToken">getAuthToken</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.RolesTest" hash-for-method="getRoles">getRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="getRoles">getRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="getUsers">getUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.BasicTest" hash-for-method="listApiKeys">listApiKeys</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="listAuthtoken">listAuthtoken</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="listOfBlockedUsers">listOfBlockedUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.RolesTest" hash-for-method="listRoles">listRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="listUsers">listUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="reactivateUsers">reactivateUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="reactivateUsers">reactivateUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="unBlockUsers">unBlockUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.BasicTest" hash-for-method="updateApi">updateApi</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.RolesTest" hash-for-method="updateRoles">updateRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.UsersTest" hash-for-method="updateRoles">updateRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Test" title="CT_APITesting.AuthTokenTest" hash-for-method="updateRoles">updateRoles</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Regression_Test -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Regression_Test" class="panel Regression_Test">
+          <div class="suite-Regression_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">CT_APITesting.RolesTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="createRoles">
+                  </a> <!-- createRoles -->
+                  <span class="method-name">createRoles</span>
+                  <em>
+(Verify create roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="deleteRoles">
+                  </a> <!-- deleteRoles -->
+                  <span class="method-name">deleteRoles</span>
+                  <em>
+(Verify delete roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getRoles">
+                  </a> <!-- getRoles -->
+                  <span class="method-name">getRoles</span>
+                  <em>
+(verify get roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="listRoles">
+                  </a> <!-- listRoles -->
+                  <span class="method-name">listRoles</span>
+                  <em>
+(Verify list roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="updateRoles">
+                  </a> <!-- updateRoles -->
+                  <span class="method-name">updateRoles</span>
+                  <em>
+(Verify update roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Test-class-passed -->
+          <div class="suite-Regression_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">CT_APITesting.BasicTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="createApiKey">
+                  </a> <!-- createApiKey -->
+                  <span class="method-name">createApiKey</span>
+                  <em>
+(Verify if user can create an API key)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="deleteApiKey">
+                  </a> <!-- deleteApiKey -->
+                  <span class="method-name">deleteApiKey</span>
+                  <em>
+(verify if user can delete an API key)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getAPI">
+                  </a> <!-- getAPI -->
+                  <span class="method-name">getAPI</span>
+                  <em>
+(verify if user can retrieve an API key)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="listApiKeys">
+                  </a> <!-- listApiKeys -->
+                  <span class="method-name">listApiKeys</span>
+                  <em>
+(verify if user is able to list all the API keys associated with the app)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="updateApi">
+                  </a> <!-- updateApi -->
+                  <span class="method-name">updateApi</span>
+                  <em>
+(verify if user can update an API key)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Test-class-passed -->
+          <div class="suite-Regression_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">CT_APITesting.UsersTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="blockUsers">
+                  </a> <!-- blockUsers -->
+                  <span class="method-name">blockUsers</span>
+                  <em>
+(Verify block users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="createUser">
+                  </a> <!-- createUser -->
+                  <span class="method-name">createUser</span>
+                  <em>
+(Verity create users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="deactivateUsers">
+                  </a> <!-- deactivateUsers -->
+                  <span class="method-name">deactivateUsers</span>
+                  <em>
+(Verify deactivate users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="deleteUsers">
+                  </a> <!-- deleteUsers -->
+                  <span class="method-name">deleteUsers</span>
+                  <em>
+(Verify delete users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getUsers">
+                  </a> <!-- getUsers -->
+                  <span class="method-name">getUsers</span>
+                  <em>
+(Verify get users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="listOfBlockedUsers">
+                  </a> <!-- listOfBlockedUsers -->
+                  <span class="method-name">listOfBlockedUsers</span>
+                  <em>
+(Verify list of blocked users )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="listUsers">
+                  </a> <!-- listUsers -->
+                  <span class="method-name">listUsers</span>
+                  <em>
+(Verify List users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="reactivateUsers">
+                  </a> <!-- reactivateUsers -->
+                  <span class="method-name">reactivateUsers</span>
+                  <em>
+(Verify reactivate users functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="unBlockUsers">
+                  </a> <!-- unBlockUsers -->
+                  <span class="method-name">unBlockUsers</span>
+                  <em>
+(Verify unblock users )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="updateRoles">
+                  </a> <!-- updateRoles -->
+                  <span class="method-name">updateRoles</span>
+                  <em>
+(Verify update roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Test-class-passed -->
+          <div class="suite-Regression_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">CT_APITesting.AuthTokenTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="createAuthToken">
+                  </a> <!-- createAuthToken -->
+                  <span class="method-name">createAuthToken</span>
+                  <em>
+(verify Auth token functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="deleteAuthToken">
+                  </a> <!-- deleteAuthToken -->
+                  <span class="method-name">deleteAuthToken</span>
+                  <em>
+(Verify delete auth token functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getAuthToken">
+                  </a> <!-- getAuthToken -->
+                  <span class="method-name">getAuthToken</span>
+                  <em>
+(verify get authtoken)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getRoles">
+                  </a> <!-- getRoles -->
+                  <span class="method-name">getRoles</span>
+                  <em>
+(Verify get roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="listAuthtoken">
+                  </a> <!-- listAuthtoken -->
+                  <span class="method-name">listAuthtoken</span>
+                  <em>
+(Verify list of auth tokens)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="reactivateUsers">
+                  </a> <!-- reactivateUsers -->
+                  <span class="method-name">reactivateUsers</span>
+                  <em>
+(Verify reactivate users)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="updateRoles">
+                  </a> <!-- updateRoles -->
+                  <span class="method-name">updateRoles</span>
+                  <em>
+(Verify update roles functionality)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Test-class-passed -->
+        </div> <!-- panel Regression_Test -->
+        <div panel-name="test-xml-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">/Users/imransayyed/Work/RestApiAutomation/RestAPITest/XML/FirstTest.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot; name=&quot;Regression_Test&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; verbose=&quot;0&quot; name=&quot;BasicTest&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;CT_APITesting.BasicTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- BasicTest --&gt;
+  &lt;test thread-count=&quot;5&quot; verbose=&quot;0&quot; name=&quot;RolesTest&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;CT_APITesting.RolesTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- RolesTest --&gt;
+  &lt;test thread-count=&quot;5&quot; verbose=&quot;0&quot; name=&quot;UsersTest&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;CT_APITesting.UsersTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- UsersTest --&gt;
+  &lt;test thread-count=&quot;5&quot; verbose=&quot;0&quot; name=&quot;AuthTokenTest&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;CT_APITesting.AuthTokenTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- AuthTokenTest --&gt;
+&lt;/suite&gt; &lt;!-- Regression_Test --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Regression_Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">BasicTest (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">RolesTest (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">UsersTest (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">AuthTokenTest (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Regression_Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Regression_Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Regression_Test');
+function tableData_Regression_Test() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(27);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'createApiKey')
+data.setCell(0, 2, 'CT_APITesting.BasicTest')
+data.setCell(0, 3, 3474);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'createAuthToken')
+data.setCell(1, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(1, 3, 2818);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'listApiKeys')
+data.setCell(2, 2, 'CT_APITesting.BasicTest')
+data.setCell(2, 3, 1698);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'createRoles')
+data.setCell(3, 2, 'CT_APITesting.RolesTest')
+data.setCell(3, 3, 1558);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'updateApi')
+data.setCell(4, 2, 'CT_APITesting.BasicTest')
+data.setCell(4, 3, 1540);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'reactivateUsers')
+data.setCell(5, 2, 'CT_APITesting.UsersTest')
+data.setCell(5, 3, 1526);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'getUsers')
+data.setCell(6, 2, 'CT_APITesting.UsersTest')
+data.setCell(6, 3, 1517);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'getAPI')
+data.setCell(7, 2, 'CT_APITesting.BasicTest')
+data.setCell(7, 3, 1481);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'createUser')
+data.setCell(8, 2, 'CT_APITesting.UsersTest')
+data.setCell(8, 3, 1480);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'getRoles')
+data.setCell(9, 2, 'CT_APITesting.RolesTest')
+data.setCell(9, 3, 1404);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'deleteApiKey')
+data.setCell(10, 2, 'CT_APITesting.BasicTest')
+data.setCell(10, 3, 1392);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'getAuthToken')
+data.setCell(11, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(11, 3, 1370);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'deleteRoles')
+data.setCell(12, 2, 'CT_APITesting.RolesTest')
+data.setCell(12, 3, 1355);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'listAuthtoken')
+data.setCell(13, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(13, 3, 1334);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'listOfBlockedUsers')
+data.setCell(14, 2, 'CT_APITesting.UsersTest')
+data.setCell(14, 3, 1331);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'listRoles')
+data.setCell(15, 2, 'CT_APITesting.RolesTest')
+data.setCell(15, 3, 1321);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'unBlockUsers')
+data.setCell(16, 2, 'CT_APITesting.UsersTest')
+data.setCell(16, 3, 1295);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'updateRoles')
+data.setCell(17, 2, 'CT_APITesting.RolesTest')
+data.setCell(17, 3, 1270);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'deleteUsers')
+data.setCell(18, 2, 'CT_APITesting.UsersTest')
+data.setCell(18, 3, 1268);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'blockUsers')
+data.setCell(19, 2, 'CT_APITesting.UsersTest')
+data.setCell(19, 3, 1257);
+data.setCell(20, 0, 20)
+data.setCell(20, 1, 'listUsers')
+data.setCell(20, 2, 'CT_APITesting.UsersTest')
+data.setCell(20, 3, 1243);
+data.setCell(21, 0, 21)
+data.setCell(21, 1, 'deactivateUsers')
+data.setCell(21, 2, 'CT_APITesting.UsersTest')
+data.setCell(21, 3, 1231);
+data.setCell(22, 0, 22)
+data.setCell(22, 1, 'deleteAuthToken')
+data.setCell(22, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(22, 3, 1201);
+data.setCell(23, 0, 23)
+data.setCell(23, 1, 'updateRoles')
+data.setCell(23, 2, 'CT_APITesting.UsersTest')
+data.setCell(23, 3, 0);
+data.setCell(24, 0, 24)
+data.setCell(24, 1, 'updateRoles')
+data.setCell(24, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(24, 3, 0);
+data.setCell(25, 0, 25)
+data.setCell(25, 1, 'reactivateUsers')
+data.setCell(25, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(25, 3, 0);
+data.setCell(26, 0, 26)
+data.setCell(26, 1, 'getRoles')
+data.setCell(26, 2, 'CT_APITesting.AuthTokenTest')
+data.setCell(26, 3, 0);
+window.suiteTableData['Regression_Test']= { tableData: data, tableDiv: 'times-div-Regression_Test'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 35 seconds</span>
+              <div id="times-div-Regression_Test">
+              </div> <!-- times-div-Regression_Test -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Regression_Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Regression_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">CT_APITesting.AuthTokenTest</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">beforeSuiteFunction(, , )</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">CT_APITesting.BasicTest</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">beforeTestFunction(, null, null, null, org.testng.TestRunner@326e0b8e)</span>
+                <span class="method-start">21 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">StartApiTest</span>
+                <span class="method-start">114 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@326e0b8e, public void CT_APITesting.BasicTest.createApiKey())</span>
+                <span class="method-start">665 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">createApiKey</span>
+                <span class="method-start">674 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.BasicTest.createApiKey(), [TestResult name=createApiKey status=SUCCESS met...)</span>
+                <span class="method-start">4151 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@326e0b8e, public void CT_APITesting.BasicTest.listApiKeys())</span>
+                <span class="method-start">4371 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">listApiKeys</span>
+                <span class="method-start">4377 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.BasicTest.listApiKeys(), [TestResult name=listApiKeys status=SUCCESS metho...)</span>
+                <span class="method-start">6076 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@326e0b8e, public void CT_APITesting.BasicTest.getAPI())</span>
+                <span class="method-start">6144 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">getAPI</span>
+                <span class="method-start">6145 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.BasicTest.getAPI(), [TestResult name=getAPI status=SUCCESS method=BasicTes...)</span>
+                <span class="method-start">7629 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@326e0b8e, public void CT_APITesting.BasicTest.updateApi())</span>
+                <span class="method-start">7681 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">updateApi</span>
+                <span class="method-start">7686 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.BasicTest.updateApi(), [TestResult name=updateApi status=SUCCESS method=Ba...)</span>
+                <span class="method-start">9227 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@326e0b8e, public void CT_APITesting.BasicTest.deleteApiKey())</span>
+                <span class="method-start">9290 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deleteApiKey</span>
+                <span class="method-start">9293 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.BasicTest.deleteApiKey(), [TestResult name=deleteApiKey status=SUCCESS met...)</span>
+                <span class="method-start">10689 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">EndAPITest</span>
+                <span class="method-start">10747 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">CT_APITesting.RolesTest</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">beforeTestFunction(, null, null, null, org.testng.TestRunner@36baa049)</span>
+                <span class="method-start">10870 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">StartApiTest</span>
+                <span class="method-start">10897 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@36baa049, public void CT_APITesting.RolesTest.createRoles())</span>
+                <span class="method-start">10900 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">createRoles</span>
+                <span class="method-start">10904 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.RolesTest.createRoles(), [TestResult name=createRoles status=SUCCESS metho...)</span>
+                <span class="method-start">12463 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@36baa049, public void CT_APITesting.RolesTest.listRoles())</span>
+                <span class="method-start">12522 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">listRoles</span>
+                <span class="method-start">12525 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.RolesTest.listRoles(), [TestResult name=listRoles status=SUCCESS method=Ro...)</span>
+                <span class="method-start">13849 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@36baa049, public void CT_APITesting.RolesTest.getRoles())</span>
+                <span class="method-start">13889 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">getRoles</span>
+                <span class="method-start">13897 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.RolesTest.getRoles(), [TestResult name=getRoles status=SUCCESS method=Role...)</span>
+                <span class="method-start">15302 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@36baa049, public void CT_APITesting.RolesTest.updateRoles())</span>
+                <span class="method-start">15344 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">updateRoles</span>
+                <span class="method-start">15349 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.RolesTest.updateRoles(), [TestResult name=updateRoles status=SUCCESS metho...)</span>
+                <span class="method-start">16619 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@36baa049, public void CT_APITesting.RolesTest.deleteRoles())</span>
+                <span class="method-start">16648 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deleteRoles</span>
+                <span class="method-start">16651 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.RolesTest.deleteRoles(), [TestResult name=deleteRoles status=SUCCESS metho...)</span>
+                <span class="method-start">18013 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">EndAPITest</span>
+                <span class="method-start">18068 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">CT_APITesting.UsersTest</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">beforeTestFunction(, null, null, null, org.testng.TestRunner@41184371)</span>
+                <span class="method-start">18082 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">StartApiTest</span>
+                <span class="method-start">18094 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.createUser())</span>
+                <span class="method-start">18095 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">createUser</span>
+                <span class="method-start">18099 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.createUser(), [TestResult name=createUser status=SUCCESS method=...)</span>
+                <span class="method-start">19580 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.listUsers())</span>
+                <span class="method-start">19609 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">listUsers</span>
+                <span class="method-start">19618 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.listUsers(), [TestResult name=listUsers status=SUCCESS method=Us...)</span>
+                <span class="method-start">20861 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.deactivateUsers())</span>
+                <span class="method-start">20880 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deactivateUsers</span>
+                <span class="method-start">20884 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.deactivateUsers(), [TestResult name=deactivateUsers status=SUCCE...)</span>
+                <span class="method-start">22116 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.reactivateUsers())</span>
+                <span class="method-start">22149 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">reactivateUsers</span>
+                <span class="method-start">22150 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.reactivateUsers(), [TestResult name=reactivateUsers status=SUCCE...)</span>
+                <span class="method-start">23678 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.getUsers())</span>
+                <span class="method-start">23713 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">getUsers</span>
+                <span class="method-start">23722 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.getUsers(), [TestResult name=getUsers status=SUCCESS method=User...)</span>
+                <span class="method-start">25241 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.updateRoles())</span>
+                <span class="method-start">25291 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">updateRoles</span>
+                <span class="method-start">25299 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.updateRoles(), [TestResult name=updateRoles status=SUCCESS metho...)</span>
+                <span class="method-start">25299 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.deleteUsers())</span>
+                <span class="method-start">25334 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deleteUsers</span>
+                <span class="method-start">25338 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.deleteUsers(), [TestResult name=deleteUsers status=SUCCESS metho...)</span>
+                <span class="method-start">26607 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.blockUsers())</span>
+                <span class="method-start">26646 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">blockUsers</span>
+                <span class="method-start">26649 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.blockUsers(), [TestResult name=blockUsers status=SUCCESS method=...)</span>
+                <span class="method-start">27907 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.listOfBlockedUsers())</span>
+                <span class="method-start">27944 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">listOfBlockedUsers</span>
+                <span class="method-start">27947 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.listOfBlockedUsers(), [TestResult name=listOfBlockedUsers status...)</span>
+                <span class="method-start">29279 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@41184371, public void CT_APITesting.UsersTest.unBlockUsers())</span>
+                <span class="method-start">29328 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">unBlockUsers</span>
+                <span class="method-start">29339 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.UsersTest.unBlockUsers(), [TestResult name=unBlockUsers status=SUCCESS met...)</span>
+                <span class="method-start">30636 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">EndAPITest</span>
+                <span class="method-start">30687 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">CT_APITesting.AuthTokenTest</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">beforeTestFunction(, null, null, null, org.testng.TestRunner@34585ac9)</span>
+                <span class="method-start">30693 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">StartApiTest</span>
+                <span class="method-start">30702 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.createAuthToken())</span>
+                <span class="method-start">30703 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">createAuthToken</span>
+                <span class="method-start">30710 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.createAuthToken(), [TestResult name=createAuthToken status=S...)</span>
+                <span class="method-start">33528 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.listAuthtoken())</span>
+                <span class="method-start">33578 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">listAuthtoken</span>
+                <span class="method-start">33582 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.listAuthtoken(), [TestResult name=listAuthtoken status=SUCCE...)</span>
+                <span class="method-start">34918 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.getAuthToken())</span>
+                <span class="method-start">34960 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">getAuthToken</span>
+                <span class="method-start">34966 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.getAuthToken(), [TestResult name=getAuthToken status=SUCCESS...)</span>
+                <span class="method-start">36337 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.reactivateUsers())</span>
+                <span class="method-start">36361 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">reactivateUsers</span>
+                <span class="method-start">36369 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.reactivateUsers(), [TestResult name=reactivateUsers status=S...)</span>
+                <span class="method-start">36369 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.getRoles())</span>
+                <span class="method-start">36384 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">getRoles</span>
+                <span class="method-start">36390 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.getRoles(), [TestResult name=getRoles status=SUCCESS method=...)</span>
+                <span class="method-start">36390 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.updateRoles())</span>
+                <span class="method-start">36403 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">updateRoles</span>
+                <span class="method-start">36406 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.updateRoles(), [TestResult name=updateRoles status=SUCCESS m...)</span>
+                <span class="method-start">36406 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethodFunction(org.testng.TestRunner@34585ac9, public void CT_APITesting.AuthTokenTest.deleteAuthToken())</span>
+                <span class="method-start">36424 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">deleteAuthToken</span>
+                <span class="method-start">36425 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethodFunction(public void CT_APITesting.AuthTokenTest.deleteAuthToken(), [TestResult name=deleteAuthToken status=S...)</span>
+                <span class="method-start">37628 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-class after">
+                <span class="method-name">EndAPITest</span>
+                <span class="method-start">37662 ms</span>
+              </div> <!-- configuration-class after -->
+              <div class="configuration-suite after">
+                <span class="method-name">zipFolder</span>
+                <span class="method-start">37670 ms</span>
+              </div> <!-- configuration-suite after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>
