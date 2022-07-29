@@ -19,7 +19,7 @@ public class GroupTest extends BaseTest {
     String mainApiKey = "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
 
 
-    @Test(priority = 0, description = "Verify create group functionality")
+    @Test(description = "Verify create group functionality")
     public void createGroups() {
 
         String guid = getRandomString("guid");
@@ -49,7 +49,7 @@ public class GroupTest extends BaseTest {
     }
 
 
-    @Test(priority = 1, description = "Verify list Groups")
+    @Test(description = "Verify list Groups",dependsOnMethods = {"createGroups"})
     public void listGroups() {
 
         String responseBody = given().
@@ -67,7 +67,7 @@ public class GroupTest extends BaseTest {
         Assert.assertEquals(js.getString("data[0].guid"), createdGuid);
     }
 
-    @Test(priority = 2, description = "verify get groups")
+    @Test(description = "verify get groups",dependsOnMethods = {"listGroups"})
     public void getGroups() {
         String responseBody = given().
                 header("apiKey", mainApiKey).
@@ -85,7 +85,7 @@ public class GroupTest extends BaseTest {
 
     }
 
-    @Test(priority = 3, description = "Verify update Group functionality")
+    @Test(description = "Verify update Group functionality",dependsOnMethods = {"getGroups"})
     public void updateGroups() {
 
         String updatedGroupName = getRandomString("newGroupName");
@@ -115,7 +115,7 @@ public class GroupTest extends BaseTest {
     }
 
 
-    @Test(priority = 4, description = "Verify delete Groups functionality")
+    @Test(description = "Verify delete Groups functionality",dependsOnMethods = {"updateGroups"})
     public void deleteGroups() {
         given().
                 header("apiKey", mainApiKey).

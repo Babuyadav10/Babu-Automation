@@ -11,7 +11,7 @@ public class AuthTokenTest extends BaseTest {
     String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
     String uid;
 
-    @Test(priority = 0,description = "verify Auth token functionality")
+    @Test(description = "verify Auth token functionality")
     public void createAuthToken(){
         String responseUsersBody=given().
                 header("apiKey",mainApiKey).
@@ -41,7 +41,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
-    @Test(priority = 1,description = "Verify list of auth tokens")
+    @Test(description = "Verify list of auth tokens",dependsOnMethods = {"createAuthToken"})
     public void listAuthtoken()
     {
 
@@ -61,7 +61,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
-    @Test(priority = 2,description = "verify get authtoken")
+    @Test(description = "verify get authtoken",dependsOnMethods = {"listAuthtoken"})
     public void getAuthToken()
     {
         JSONObject userJson = new JSONObject();
@@ -82,7 +82,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
-    @Test(priority = 3,description = "Verify reactivate users")
+    @Test(description = "Verify reactivate users",dependsOnMethods = {"getAuthToken"})
     public void reactivateUsers(){
 
 
@@ -105,7 +105,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
-    @Test(priority = 4,description = "Verify get roles functionality")
+    @Test(description = "Verify get roles functionality",dependsOnMethods = {"reactivateUsers"})
     public void getRoles(){
        /* String responseBody=given().
                 header("apiKey",mainApiKey).
@@ -123,7 +123,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
-    @Test(priority = 5,description = "Verify update roles functionality")
+    @Test(description = "Verify update roles functionality",dependsOnMethods = {"getRoles"})
     public void updateRoles(){
 
         /*String updatedRoleName= getRandomString("newRoleName");
@@ -155,7 +155,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
-    @Test(priority = 6,description = "Verify delete auth token functionality")
+    @Test(description = "Verify delete auth token functionality",dependsOnMethods = {"updateRoles"})
     public void deleteAuthToken()
 
     {
