@@ -1,10 +1,7 @@
 package CT_APITesting;
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 
-import io.restassured.RestAssured;
-import netscape.javascript.JSObject;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
