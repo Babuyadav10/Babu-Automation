@@ -67,6 +67,19 @@ public class BabuTest extends BaseTest {
 
       //  System.out.println("group id name" + gName);
 
+         /*   String responseBody = given().
+                header("apiKey", mainApiKey).
+                header("Accept", "application/json").
+                header("Content-Type", "application/json").
+                when().
+                get("/groups/"+gName+"/members").
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+
+        System.out.println(responseBody);
+
+      */
+
 
     }
 

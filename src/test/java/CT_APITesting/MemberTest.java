@@ -26,7 +26,7 @@ public class MemberTest extends BaseTest {
     String scopeType="admin";
     String mainApiKey = "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
 
-    @Test(priority = 0, description = "Verify add the members functionality")
+    @Test( description = "Verify add the members functionality")
 
     public void addMembers() {
 
@@ -57,6 +57,10 @@ public class MemberTest extends BaseTest {
         String responseBody = response.getBody().asString();
         System.out.println("responseBody : " + responseBody);
 
+        int statusCode=response.getStatusCode();
+        System.out.println("statusCode is  " + statusCode);
+        Assert.assertEquals(statusCode,200);
+
     }
 
 
@@ -64,19 +68,22 @@ public class MemberTest extends BaseTest {
     @Test(description = "Verify list Members",dependsOnMethods = {"addMembers"})
     public void listMembers() {
 
-        String responseBody = given().
-                header("apiKey", mainApiKey).
-                header("Accept", "application/json").
-                header("Content-Type", "application/json").
-                when().
-                get("/groups/"+gName+"/members").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
+        RequestSpecification httpRequestObject = RestAssured.given();
 
-        System.out.println(responseBody);
+        httpRequestObject.header("Content-Type", "application/json");
+        httpRequestObject.header("apiKey", mainApiKey);
+        httpRequestObject.header("Accept", "application/json");
 
-        //PathFinder(responseBody);
-      //  Assert.assertEquals(js.getString("data[0].guid"), createdGuid);
+        Response response = httpRequestObject.request(Method.GET,"/groups/"+gName+"/members");
+
+        String responseBody = response.getBody().asString();
+        System.out.println("responseBody : " + responseBody);
+
+        int statusCode=response.getStatusCode();
+        System.out.println("statusCode is  " + statusCode);
+        Assert.assertEquals(statusCode,200);
+
+
     }
 
 
@@ -98,6 +105,10 @@ public class MemberTest extends BaseTest {
 
         String responseBody = response.getBody().asString();
         System.out.println("responseBody : " + responseBody);
+
+        int statusCode=response.getStatusCode();
+        System.out.println("statusCode is  " + statusCode);
+        Assert.assertEquals(statusCode,200);
     }
 
     @Test(description = "Verify kick user",dependsOnMethods = {"ChangeScope"})
@@ -118,6 +129,10 @@ public class MemberTest extends BaseTest {
 
         String responseBody = response.getBody().asString();
         System.out.println("responseBody : " + responseBody);
+
+        int statusCode=response.getStatusCode();
+        System.out.println("statusCode is  " + statusCode);
+        Assert.assertEquals(statusCode,200);
     }
 
 }
