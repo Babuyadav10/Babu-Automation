@@ -6,10 +6,13 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class UsersTest extends BaseTest {
-    String createdUserId;
+   public String createdUserId;
     String createdUserName;
     String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
     String responseBody;
+
+    int ptc=0;
+
 
     @Test(description = "Verity create users functionality")
     public void createUser(){
@@ -27,12 +30,17 @@ public class UsersTest extends BaseTest {
                 post("/users").
                 then().
                 assertThat().statusCode(200).extract().body().asString();
-
+ if(ptc!=-1)
         System.out.println(responseBody);
         PathFinder(responseBody);
         createdUserId = js.getString("data.uid");
         createdUserName=js.getString("data.name");
+
+        if(ptc!=-1)
         System.out.println(createdUserId);
+
+        MemberTest.UName=createdUserId;
+
 
     }
 
