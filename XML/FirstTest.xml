@@ -10,6 +10,7 @@
 			<class name="CT_APITesting.AuthTokenTest"></class>
 			<class name="CT_APITesting.GroupTest"></class>
 			<class name="CT_APITesting.MemberTest" ></class>
+			<class name="CT_APITesting.FriendsTest" ></class>
 		</classes>
 	</test>
 

@@ -41,6 +41,7 @@ public class UsersTest extends BaseTest {
 
         MemberTest.UName=createdUserId;
 
+        FriendsTest.uName=createdUserId;
 
     }
 
