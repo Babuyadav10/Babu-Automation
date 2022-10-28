@@ -43,6 +43,8 @@ public class UsersTest extends BaseTest {
 
         FriendsTest.uName=createdUserId;
 
+        MessageTest.UName=createdUserId;
+
     }
 
     @Test(description = "Verify List users functionality",dependsOnMethods = {"createUser"})

@@ -11,6 +11,7 @@
 			<class name="CT_APITesting.GroupTest"></class>
 			<class name="CT_APITesting.MemberTest" ></class>
 			<class name="CT_APITesting.FriendsTest" ></class>
+			<class name="CT_APITesting.MessageTest" ></class>
 		</classes>
 	</test>
 

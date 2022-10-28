@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.objects.XString;
 import groovy.lang.GString;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONArray;
@@ -18,6 +19,7 @@ public class MemberTest extends BaseTest {
 
     public static String gName;
     public static String UName;
+    int bs=0;
 
     String ontheBehalfUser="superhero1";
 
@@ -30,6 +32,7 @@ public class MemberTest extends BaseTest {
 
     public void addMembers() {
 
+
         GroupTest gt = new GroupTest();
         gt.intc = -1;
         gt.createGroups();
@@ -41,7 +44,7 @@ public class MemberTest extends BaseTest {
         System.out.println("group id name = " + gName);
         System.out.println("user id name = " + UName);
 
-       RequestSpecification httpRequestObject = RestAssured.given();
+       RequestSpecification httpRequestObject = given();
 
         JSONObject userJson = new JSONObject();
             userJson.put("participants",new String[]{UName});
@@ -55,11 +58,15 @@ public class MemberTest extends BaseTest {
         Response response = httpRequestObject.request(Method.POST,"/groups/"+gName+"/members");
 
         String responseBody = response.getBody().asString();
+        if (bs !=-1)
         System.out.println("responseBody : " + responseBody);
 
         int statusCode=response.getStatusCode();
+        if (bs !=-1)
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode,200);
+
+        Assert.assertEquals(responseBody.contains("added"),true);
 
     }
 
@@ -83,6 +90,8 @@ public class MemberTest extends BaseTest {
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode,200);
 
+        PathFinder(responseBody);
+        Assert.assertEquals(js.getString("data[0].uid"),UName);
 
     }
 

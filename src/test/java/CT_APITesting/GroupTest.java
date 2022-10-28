@@ -55,6 +55,8 @@ public class GroupTest extends BaseTest {
 
         MemberTest.gName=createdGuid;
 
+        MessageTest.gName=createdGuid;
+
 
     }
 
