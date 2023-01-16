@@ -7,18 +7,9 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class RolesTest extends BaseTest {
-
-        //public HashMap<String,Object> userJson;
-
-//        String Email,AccessToken;
-//        ArrayList<String> emailValues = new ArrayList<String>();
-//        int EmailCounts;
         String createdRole;
         String createdRoleName;
-        String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
-
-
-
+        String apiKey = GlobalClassTest.prop.getProperty("apiKey");
         @Test(description = "Verify create roles functionality")
         public void createRoles(){
 
@@ -28,28 +19,47 @@ public class RolesTest extends BaseTest {
                 JSONObject userJson = new JSONObject();
                 userJson.put("role",role);
                 userJson.put("name",roleName);
-                userJson.put("description","anim amet voluptate non");
+                userJson.put("description","role & name are randomly created");
                 String responseBody=given().
-                        header("apiKey",mainApiKey).header("Content-Type","application/json").header("Accept","application/json").
+                        header("apiKey",apiKey).header("Content-Type","application/json").header("Accept","application/json").
                         body(userJson.toString(1)).
                         when().
                         post("/roles").
                         then().
                         assertThat().statusCode(200).extract().body().asString();
 
-                System.out.println(responseBody);
-               PathFinder(responseBody);
+                System.out.println("responseBody : " +responseBody);
+                PathFinder(responseBody);
                createdRole = js.getString("data.role");
                createdRoleName=js.getString("data.name");
                System.out.println(createdRole);
+        }
+        @Test(description = "Verify create roles already taken functionality", dependsOnMethods = {"createRoles"})
+        public void createRolesAlreadyTaken(){
 
+                String roleName= getRandomString("roleName");
+
+                JSONObject userJson = new JSONObject();
+                userJson.put("role",createdRole);
+                userJson.put("name",roleName);
+                userJson.put("description","role & name are randomly created");
+                String responseBody=given().
+                        header("apiKey",apiKey).header("Content-Type","application/json").header("Accept","application/json").
+                        body(userJson.toString(1)).
+                        when().
+                        post("/roles").
+                        then().
+                        assertThat().statusCode(400).extract().body().asString();
+
+                System.out.println(responseBody);
+                PathFinder(responseBody);
         }
 
         @Test(description = "Verify list roles functionality",dependsOnMethods = {"createRoles"})
         public void listRoles(){
 
                 String responseBody=given().
-                        header("apiKey",mainApiKey).
+                        header("apiKey",apiKey).
                         header("Accept","application/json").
                         when().
                         get("/roles").
@@ -65,7 +75,7 @@ public class RolesTest extends BaseTest {
         @Test(description = "verify get roles functionality",dependsOnMethods = {"listRoles"})
         public void getRoles(){
                 String responseBody=given().
-                        header("apiKey",mainApiKey).
+                        header("apiKey",apiKey).
                         header("Accept","application/json").
                         get("/roles/"+createdRole).then().
                         assertThat().statusCode(200).extract().body().asString();
@@ -92,7 +102,7 @@ public class RolesTest extends BaseTest {
 
 
                 String responseBody=given().
-                        header("apiKey",mainApiKey).
+                        header("apiKey",apiKey).
                         header("Accept","application/json").
                         header("Content-Type","application/json").
                         body(userJson.toString(1)).
@@ -116,7 +126,7 @@ public class RolesTest extends BaseTest {
 
         {
                       given().
-                        header("apiKey",mainApiKey).
+                        header("apiKey",apiKey).
                         header("Accept","application/json").
                         when().
                         delete("/roles/"+createdRole).

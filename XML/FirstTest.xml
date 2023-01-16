@@ -4,15 +4,15 @@
 
 	<test name="Functional_Test" parallel="false">
 		<classes>
-			<class name="CT_APITesting.BasicTest" />
-			<class name="CT_APITesting.RolesTest" />
+
+			<class name="CT_APITesting.ApiKeyTest"></class>
+			<class name="CT_APITesting.Test1"></class>
 			<class name="CT_APITesting.UsersTest"></class>
-			<class name="CT_APITesting.AuthTokenTest"></class>
 			<class name="CT_APITesting.GroupTest"></class>
-			<class name="CT_APITesting.MemberTest" ></class>
-			<class name="CT_APITesting.FriendsTest" ></class>
-			<class name="CT_APITesting.MessageTest" ></class>
+
+
 		</classes>
+
 	</test>
 
 </suite>

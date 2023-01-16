@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 public class AuthTokenTest extends BaseTest {
     String createdAuthToken;
     String createdUserName;
-    String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
+    String mainApiKey= GlobalClassTest.prop.getProperty("apiKey");
     String uid;
 
     @Test(description = "verify Auth token functionality")
@@ -38,6 +38,9 @@ public class AuthTokenTest extends BaseTest {
         PathFinder(responseBody);
         createdAuthToken = js.getString("data.authToken");
         System.out.println(createdAuthToken);
+
+      //  ReactionTest.userUid=uid;
+      //  ReactionTest.userAuthToken=createdAuthToken;
 
     }
 

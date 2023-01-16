@@ -20,13 +20,13 @@ public class MemberTest extends BaseTest {
     public static String gName;
     public static String UName;
     int bs=0;
-
+    int intc;
     String ontheBehalfUser="superhero1";
 
     String userType="participants";
 
     String scopeType="admin";
-    String mainApiKey = "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
+    String mainApiKey = "5a6d4f539bd2858d6841d90076dbd7c30cb7607b";
 
     @Test( description = "Verify add the members functionality")
 
@@ -34,7 +34,7 @@ public class MemberTest extends BaseTest {
 
 
         GroupTest gt = new GroupTest();
-        gt.intc = -1;
+       // gt.intc = -1;
         gt.createGroups();
 
         UsersTest ut = new UsersTest();

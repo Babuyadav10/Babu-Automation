@@ -6,6 +6,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import io.restassured.RestAssured;
+import io.restassured.config.LogConfig;
+import io.restassured.filter.log.LogDetail;
 import io.restassured.path.json.JsonPath;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -41,6 +43,7 @@ public class BaseTest {
     XSSFWorkbook wb;
     XSSFSheet sh;
     int TotalRowCount;
+
 
     @Parameters({ "client", "toggle", "url" })
     @BeforeSuite
@@ -98,6 +101,7 @@ public class BaseTest {
         String URI = prop.getProperty("baseURL");
 
         RestAssured.baseURI = URI;
+
        // userJson = new HashMap<>();
 //        userJson.put("name","Rohit");
 //        userJson.put("job","QA");

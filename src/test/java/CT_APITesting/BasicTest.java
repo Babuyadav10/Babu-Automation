@@ -18,7 +18,7 @@ public class BasicTest extends BaseTest {
 //        int EmailCounts;
         String createdAPIKey;
         String createdAPIName;
-        String mainApiKey= "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
+        String mainApiKey= "f94584ff0d4bc5e0ed618af0dbebab09d0439ca2";
 
 
 

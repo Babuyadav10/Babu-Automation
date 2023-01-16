@@ -3,8 +3,39 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="/Users/imransayyed/Work/RestApiAutomation/RestAPITest">
         <classes>
-            <class name="CT_APITesting.BasicTest"></class>
-            <class name="CT_APITesting.RolesTest"></class>
-            <class name="CT_APITesting.UsersTest"></class>
+
+            <class name="CT_APITesting.AvatarTest" ></class>
+            <class name="CT_APITesting.MessageIDTest" ></class>
+            <class name="CT_APITesting.BitlyTest" ></class>
+            <class name="CT_APITesting.CollaborativeTest" ></class>
+            <class name="CT_APITesting.DataMaskingTest" ></class>
+            <class name="CT_APITesting.DisappearingMessageTest" ></class>
+            <class name="CT_APITesting.GfycatTest" ></class>
+            <class name="CT_APITesting.GiphyTest" ></class>
+            <class name="CT_APITesting.ImageModerationTest" ></class>
+            <class name="CT_APITesting.ImageThumbnailTest" ></class>
+            <class name="CT_APITesting.LinkPreviewTest" ></class>
+            <class name="CT_APITesting.MentionsTest" ></class>
+            <class name="CT_APITesting.MessageShortcutsTest" ></class>
+            <class name="CT_APITesting.MessageTranslateTest" ></class>
+            <class name="CT_APITesting.PinMessageTest" ></class>
+            <class name="CT_APITesting.PollsTest" ></class>
+            <class name="CT_APITesting.ProfanityFilterTest" ></class>
+            <class name="CT_APITesting.ReactionTest" ></class>
+            <class name="CT_APITesting.ReminderTest" ></class>
+            <class name="CT_APITesting.ReportMessageTest" ></class>
+            <class name="CT_APITesting.ReportUserTest" ></class>
+            <class name="CT_APITesting.RichMediaTest" ></class>
+            <class name="CT_APITesting.SaveMessageTest" ></class>
+            <class name="CT_APITesting.SentimentAnalysisTest" ></class>
+            <class name="CT_APITesting.StickersTest" ></class>
+            <class name="CT_APITesting.StipopTest" ></class>
+            <class name="CT_APITesting.TenorTest" ></class>
+            <class name="CT_APITesting.TinyUrlTest" ></class>
+            <class name="CT_APITesting.VideoBroadCastingTest" ></class>
+            <class name="CT_APITesting.WhiteBoardTest" ></class>
+            <class name="CT_APITesting.XssFilterTest" ></class>
+
+
         </classes>
         </test></suite>

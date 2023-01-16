@@ -2,6 +2,7 @@ package CT_APITesting;
 
         import io.restassured.RestAssured;
         import io.restassured.http.Method;
+        import io.restassured.path.json.JsonPath;
         import io.restassured.response.Response;
         import io.restassured.specification.RequestSpecification;
         import org.json.JSONObject;
@@ -17,7 +18,7 @@ public class BabuTest extends BaseTest {
 
     String createdGroupName;
     String createdGroupType = "public";
-    String mainApiKey = "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
+    String mainApiKey = "c7dcd3ff228dfa6445111f73ce6a4f7cdefc7b11";
 
     @Test(priority = 0, description = "Verify add the members functionality")
     public void addMembers() {
@@ -44,11 +45,15 @@ public class BabuTest extends BaseTest {
         String responseBody = response.getBody().asString();
         System.out.println("responseBody is " + responseBody);
 
-        PathFinder(responseBody);
-        createdGuid = js.getString("data.guid");
-        createdGroupName = js.getString("data.name");
-        createdGroupType = js.getString("data.type");
-        System.out.println("createdGuid =" +createdGuid);
+//        public void PathFinder(String Response){
+//            JsonPath bs = new JsonPath(Response);
+//        }
+
+//        PathFinder(responseBody);
+//        createdGuid = js.getString("data.guid");
+//        createdGroupName = js.getString("data.name");
+//        createdGroupType = js.getString("data.type");
+//        System.out.println("createdGuid =" +createdGuid);
 
                    int statusCode=response.getStatusCode();
         System.out.println("statusCode is = " + statusCode);

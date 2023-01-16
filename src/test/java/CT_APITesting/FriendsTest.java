@@ -17,7 +17,7 @@ import static io.restassured.RestAssured.given;
 public class FriendsTest extends BaseTest {
     public static String uName;
     String friendName = "superhero1";
-    String mainApiKey = "10ca9c4268ffa7ef032de02e8606da7e3bf67b4f";
+    String mainApiKey = "5a6d4f539bd2858d6841d90076dbd7c30cb7607b";
 
     @Test(description = "Verify add the friends functionality")
 
