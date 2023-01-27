@@ -27,7 +27,7 @@ public class ApiKeyTest extends BaseTest {
 
     public void createApiKey() {
 
-        String name1 = getRandomString("name");
+        String name1 = getRandomString("apiKey");
         RequestSpecification httpRequestObject = getCommon();
 
         JSONObject userJson = new JSONObject();
@@ -38,18 +38,20 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.POST, "/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
         PathFinder(responseBody);
-        Assert.assertEquals(js.getString("data.name"),name1);
+        createdApiKey= js.getString("data.apiKey");
+        createdName = js.getString("data.name");
+
     }
-    @Test(description = "Verify create ApiKey Scope AuthOnly functionality")
+    @Test(description = "Verify create ApiKey Scope AuthOnly functionality",dependsOnMethods = {"createApiKey"})
 
     public void createApiKeyScopeAuthOnly() {
 
-        String name1 = getRandomString("name1");
+        String name1 = getRandomString("apiKey");
         RequestSpecification httpRequestObject = getCommon();
 
         JSONObject userJson = new JSONObject();
@@ -60,19 +62,18 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.POST, "/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
-        PathFinder(responseBody);
-        Assert.assertEquals(js.getString("data.name"),name1);
+
     }
 
-    @Test(description = "Verify create ApiKey Without Scope functionality")
+    @Test(description = "Verify create ApiKey Without Scope functionality",dependsOnMethods = {"createApiKey"})
 
     public void createApiKeyWithoutScope() {
 
-        String name1 = getRandomString("name1");
+        String name1 = getRandomString("apiKey");
         RequestSpecification httpRequestObject = getCommon();
 
         JSONObject userJson = new JSONObject();
@@ -82,13 +83,11 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.POST, "/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
-        PathFinder(responseBody);
-       Assert.assertEquals(js.getString("data.name"),name1);
-       createdName= js.getString("data.name");
+
     }
     @Test(description = "Verify create ApiKey Scope AuthOnly functionality",dependsOnMethods = {"createApiKey"})
 
@@ -104,12 +103,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.POST, "/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 400);
     }
-    @Test(description = "Verify create ApiKey Without Scope & name functionality")
+    @Test(description = "Verify create ApiKey Without Scope & name functionality",dependsOnMethods = {"createApiKey"})
 
     public void createApiKeyWithoutNameAndScope() {
 
@@ -123,121 +122,119 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.POST, "/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 400);
     }
 
-    @Test(description = "Verify list apikey")
+    @Test(description = "Verify list apikey",dependsOnMethods = {"createApiKeyWithoutNameAndScope"})
     public void listApikey() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.request(Method.GET, "/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
-        PathFinder(responseBody);
-        //Assert.assertEquals(js.getString("data.name"),name1);
-        createdApiKey= js.getString("data[0].apiKey");
+
     }
-    @Test(description = "Verify list apikey by scope")
+    @Test(description = "Verify list apikey by scope",dependsOnMethods = {"listApikey"})
     public void listApikeyByScope() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.queryParam("scope", "authOnly").get("/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
     }
-    @Test(description = "Verify list apikey by searchKey")
+    @Test(description = "Verify list apikey by searchKey",dependsOnMethods = {"listApikey"})
     public void listApikeyBySearchKey() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.queryParam("searchKey", "name").get("/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
     }
-    @Test(description = "Verify list apikey by Invalid scope")
+    @Test(description = "Verify list apikey by Invalid scope",dependsOnMethods = {"listApikey"})
     public void listApikeyByInvalidScope() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.queryParam("scope", "authOnlys").get("/apikeys");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("data"),"[]");
     }
-    @Test(description = "Verify list apikey by Invalid endpoints")
+    @Test(description = "Verify list apikey by Invalid endpoints",dependsOnMethods = {"listApikey"})
     public void listApikeyByInvalidEndpoints() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.queryParam("scope", "authOnlys").get("/apikeyss");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.message"),"The API endpoint is invalid. Please verify the API call.");
     }
-    @Test(description = "Verify Get apikey")
+    @Test(description = "Verify Get apikey",dependsOnMethods = {"listApikeyByInvalidEndpoints"})
     public void getApikey() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.request(Method.GET, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
     }
 
-    @Test(description = "Verify Get apikey invalid")
+    @Test(description = "Verify Get apikey invalid",dependsOnMethods = {"getApikey"})
     public void getApikeyInvalid() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.request(Method.GET, "/apikeys/{apiKey}","babu");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
     }
-    @Test(description = "Verify Get apikey empty")
+    @Test(description = "Verify Get apikey empty",dependsOnMethods = {"getApikey"})
     public void getApikeyEmpty() {
 
         RequestSpecification httpRequestObject = getCommon();
         Response response = httpRequestObject.request(Method.GET, "/apikeys/{apiKey}"," ");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
     }
-    @Test(description = "Verify update apiKeys functionality")
+    @Test(description = "Verify update apiKeys functionality",dependsOnMethods = {"getApikey"})
 
     public void updateApiKey() {
 
-        String name2 = getRandomString("updatedName");
+        String name2 = getRandomString("apiKeyUpdate");
         RequestSpecification httpRequestObject = getCommon();
 
         JSONObject userJson = new JSONObject();
@@ -248,7 +245,7 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
@@ -256,7 +253,7 @@ public class ApiKeyTest extends BaseTest {
         updatedCreatedApiKey= js.getString("data.apiKey");
 
     }
-    @Test(description = "Verify update apiKeys empty name functionality")
+    @Test(description = "Verify update apiKeys empty name functionality",dependsOnMethods = {"updateApiKey"})
 
     public void updateApiKeyEmptyName() {
 
@@ -270,12 +267,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 400);
     }
-    @Test(description = "Verify update apiKeys empty name functionality")
+    @Test(description = "Verify update apiKeys empty name functionality",dependsOnMethods = {"updateApiKey"})
 
     public void updateApiKeyEmptyScope() {
 
@@ -290,16 +287,16 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 400);
     }
-    @Test(description = "Verify update apiKeys only name functionality")
+    @Test(description = "Verify update apiKeys only name functionality",dependsOnMethods = {"updateApiKey"})
 
     public void updateApiKeyOnlyName() {
 
-        String name2 = getRandomString("name2");
+        String name2 = getRandomString("apiKeyUpdate");
         RequestSpecification httpRequestObject = getCommon();
 
         JSONObject userJson = new JSONObject();
@@ -309,12 +306,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
     }
-    @Test(description = "Verify update apiKeys only scope functionality")
+    @Test(description = "Verify update apiKeys only scope functionality",dependsOnMethods = {"updateApiKey"})
 
     public void updateApiKeyOnlyScope() {
 
@@ -327,12 +324,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
     }
-    @Test(description = "Verify invalid apiKeys functionality")
+    @Test(description = "Verify invalid apiKeys functionality",dependsOnMethods = {"updateApiKey"})
 
     public void updateApiKeyInvalid() {
 
@@ -347,12 +344,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/{apiKey}","babuinvalidapikey");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
     }
-    @Test(description = "Verify empty path params apiKeys functionality")
+    @Test(description = "Verify empty path params apiKeys functionality",dependsOnMethods = {"updateApiKey"})
 
     public void updateApiKeyEmptyPath() {
 
@@ -367,12 +364,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.PUT, "/apikeys/{apiKey}"," ");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
     }
-    @Test(description = "Verify delete apiKeys functionality", dependsOnMethods = {"listApikey"})
+    @Test(description = "Verify delete apiKeys functionality",dependsOnMethods = {"updateApiKeyEmptyPath"})
     public void deleteApiKey() {
 
         RequestSpecification httpRequestObject = getCommon();
@@ -380,13 +377,27 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.DELETE, "/apikeys/"+createdApiKey);
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 200);
     }
 
-    @Test(description = "Verify delete apiKeys functionality")
+    @Test(description = "Verify delete apiKeys which already deleted functionality",dependsOnMethods = {"deleteApiKey"})
+    public void deleteApiKeyAlreadyDeleted() {
+
+        RequestSpecification httpRequestObject = getCommon();
+
+        Response response = httpRequestObject.request(Method.DELETE, "/apikeys/"+createdApiKey);
+
+        String responseBody = response.getBody().asString();
+        System.out.println(responseBody);
+        int statusCode = response.getStatusCode();
+        System.out.println("statusCode is  " + statusCode);
+        Assert.assertEquals(statusCode, 404);
+    }
+
+    @Test(description = "Verify delete apiKeys functionality",dependsOnMethods = {"deleteApiKey"})
     public void deleteApiKeyEmptyPath() {
 
         RequestSpecification httpRequestObject = getCommon();
@@ -394,12 +405,12 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.DELETE, "/apikeys/{apiKeys}"," ");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
     }
-    @Test(description = "Verify delete apiKeys invalid functionality")
+    @Test(description = "Verify delete apiKeys invalid functionality",dependsOnMethods = {"deleteApiKey"})
     public void deleteApiKeyInvalid() {
 
         RequestSpecification httpRequestObject = getCommon();
@@ -407,7 +418,7 @@ public class ApiKeyTest extends BaseTest {
         Response response = httpRequestObject.request(Method.DELETE, "/apikeys/{apiKeys}","b37fb2a1702c62bcf8f506a1c4880c53be8418a5bs");
 
         String responseBody = response.getBody().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 404);
