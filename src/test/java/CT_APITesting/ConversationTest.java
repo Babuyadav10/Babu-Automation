@@ -1,5 +1,6 @@
 package CT_APITesting;
 
+import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
@@ -29,8 +30,9 @@ public class ConversationTest extends BaseTest{
                 header("onBehalfOf","superhero1").
                 when().
                 get("/conversations").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
+                then().log().ifValidationFails(LogDetail.BODY).statusCode(200).extract().body().asString();
+                //assertThat().statusCode(200);
+                //assertThat().statusCode(200).extract().body().asString();
         System.out.println(responseBody);
 
     }

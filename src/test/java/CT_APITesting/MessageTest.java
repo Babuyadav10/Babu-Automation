@@ -1095,7 +1095,7 @@ public class MessageTest extends BaseTest{
                 body(userJson2.toString(1)).
                 when().log().body().
                 post("/messages").
-                then().
+                then().log().body().
                 assertThat().statusCode(200).extract().body().asString();
         System.out.println(responseBody);
 

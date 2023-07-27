@@ -98,6 +98,7 @@ public class AvatarTest extends BaseTest {
         int statusCode = response.getStatusCode();
         System.out.println("statusCode is  " + statusCode);
         Assert.assertEquals(statusCode, 400);
+
     }
 
 }

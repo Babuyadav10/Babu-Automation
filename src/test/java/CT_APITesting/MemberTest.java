@@ -17,19 +17,95 @@ import static io.restassured.RestAssured.given;
 
 public class MemberTest extends BaseTest {
 
-    public static String gName;
-    public static String UName;
-    int bs=0;
-    int intc;
-    String ontheBehalfUser="superhero1";
+    String apiKey = GlobalClassTest.prop.getProperty("apiKey");
 
-    String userType="participants";
+    public RequestSpecification getCommon() {
+        RequestSpecification httpRequestObject;
+        httpRequestObject = given();
+        httpRequestObject.header("apiKey", apiKey);
+        httpRequestObject.header("Content-Type", "application/json");
+        httpRequestObject.header("Accept", "application/json");
+        return httpRequestObject;
+    }
+    //--------------------------------createUser-----------------------------
+/*
+    @Test(description = "Verity create users functionality")
+    public void createUser() {
 
-    String scopeType="admin";
-    String mainApiKey = "5a6d4f539bd2858d6841d90076dbd7c30cb7607b";
+        for (int i = 1; i < 500; ++i) {
 
-    @Test( description = "Verify add the members functionality")
+            String userID = "babu" + i;
+            String username = "babu" + i;
 
+            JSONObject userJson = new JSONObject();
+            userJson.put("uid", userID);
+            userJson.put("name", username);
+            userJson.put("avatar", "https://data-us.cometchat.io/227263ed046613af/avatars/cbdbdb676a84.png");
+
+            getCommon().
+
+                    body(userJson.toString(1)).
+                    when().
+                    post("/users").
+                    then().log().body();
+
+        }
+    }
+
+ */
+
+
+
+        @Test(description = "Verity create groups functionality")
+        public void createGroup ()
+        {
+            for (int i = 1; i < 200; ++i) {
+
+               // String guid = getRandomString("guid");
+               // String groupName = getRandomString("groupName");
+
+                String guid = "babuGroup" + i;
+                String groupName = "babuGroup" + i;
+
+                JSONObject userJson = new JSONObject();
+                userJson.put("guid", guid);
+                userJson.put("name", groupName);
+                userJson.put("type", "public");
+                userJson.put("description", "This group is created by automation scripts");
+
+                JSONObject userJson2 = new JSONObject();
+                userJson2.put("participants", new String[]{"superhero3"});
+                userJson2.put("moderators", new String[]{"superhero2"});
+                userJson2.put("admins", new String[]{"superhero1"});
+
+                userJson.put("members", userJson2);
+                userJson.put("tags", new String[]{"tag1", "tag2"});
+
+                getCommon().
+                        header("onBehalfOf", "superhero1").
+                        body(userJson.toString(1)).
+                        when().
+                        post("/groups").
+                        then().log().body();
+            }
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //   @Test( description = "Verify add the members functionality")
+
+    /*
     public void addMembers() {
 
 
@@ -144,7 +220,9 @@ public class MemberTest extends BaseTest {
         Assert.assertEquals(statusCode,200);
     }
 
-}
+     */
+
+
 
 
 

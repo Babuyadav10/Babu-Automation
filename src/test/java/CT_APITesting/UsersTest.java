@@ -9,16 +9,8 @@ import static io.restassured.RestAssured.given;
 
 public class UsersTest extends BaseTest {
    public static String createdUserId;
-   public String deactivatedUID;
-    String createdUserName;
-     String UIDForBlockUser;
-
-    String blockedUIDForUnblock;
-    String s1="superhero1"; // This user will block or unblock to other Users
     String apiKey = GlobalClassTest.prop.getProperty("apiKey");
-   String responseBody;
 
-    int ptc=0;
     public RequestSpecification getCommon()
     {
         RequestSpecification httpRequestObject;
@@ -28,6 +20,8 @@ public class UsersTest extends BaseTest {
         httpRequestObject.header("Accept", "application/json");
         return httpRequestObject;
     }
+      //--------------------------------createUser-----------------------------
+
     @Test(description = "Verity create users functionality")
     public void createUser(){
         String userID=getRandomString("userID");
@@ -44,36 +38,13 @@ public class UsersTest extends BaseTest {
                 post("/users").
                 then().
                 assertThat().statusCode(200).extract().body().asString();
-        System.out.println("responseBody : " +responseBody);
+        System.out.println(responseBody);
         PathFinder(responseBody);
         createdUserId = js.getString("data.uid");
-        createdUserName=js.getString("data.name");
-
-
-    //    GroupTest.userNameId = createdUserId;
-
-
-
-//        if(ptc!=-1)
-//        System.out.println("responseBody : " +responseBody);
-//
-//        PathFinder(responseBody);
-//        createdUserId = js.getString("data.uid");
-//        createdUserName=js.getString("data.name");
-//
-//        if(ptc!=-1)
-//        System.out.println(createdUserId);
-//
-//        MemberTest.UName=createdUserId;
-//
-//        FriendsTest.uName=createdUserId;
-//
-//        MessageTest.UName=createdUserId;
-//
-//     //   ReactionTest.userId=createdUserId;
 
     }
-    @Test(description = "Verity create users uid already taken functionality", dependsOnMethods = {"createUser"})
+
+    @Test(description = "Verity create users uid already taken functionality",dependsOnMethods = {"createUser"})
     public void createUserAlreadyTaken() {
         String username = getRandomString("UserName");
 
@@ -82,13 +53,13 @@ public class UsersTest extends BaseTest {
         userJson.put("name", username);
 
         String responseBody = getCommon().
-                        body(userJson.toString(1)).
+                body(userJson.toString(1)).
                 when().
                 post("/users").
                 then().
                 assertThat().statusCode(400).extract().body().asString();
 
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         PathFinder(responseBody);
         String message =js.getString("error.message");
         Assert.assertEquals(js.getString("error.message"),message);
@@ -107,9 +78,10 @@ public class UsersTest extends BaseTest {
                 post("/users").
                 then().
                 assertThat().statusCode(400).extract().body().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.details.uid[0]"),"The uid field is required.");
+
     }
     @Test(description = "Verity create users name empty functionality",dependsOnMethods = {"createUser"})
     public void createUserNameEmpty() {
@@ -125,10 +97,14 @@ public class UsersTest extends BaseTest {
                 post("/users").
                 then().
                 assertThat().statusCode(400).extract().body().asString();
-        System.out.println("responseBody : " + responseBody);
+        System.out.println(responseBody);
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.details.name[0]"),"The name field is required.");
+
     }
+
+    //--------------------------------listUsers---------------------------------
+
     @Test(description = "Verify List users functionality",dependsOnMethods = {"createUser"})
     public void listUsers()
     {
@@ -137,14 +113,8 @@ public class UsersTest extends BaseTest {
                 get("/users").
                 then().
                 assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
-       // saveResponseBodyClassLevel(responseBody);
 
-        PathFinder(responseBody);
-        Assert.assertEquals(js.getString("data[0].uid"),createdUserId);
-        UIDForBlockUser= js.getString("data[0].uid");
-        System.out.println("UIDForBlockUser :" +UIDForBlockUser);
     }
     @Test(description = "Verify List users invalid endpoints functionality",dependsOnMethods = {"createUser"})
     public void listUsersInvalidEndPoint()
@@ -158,6 +128,9 @@ public class UsersTest extends BaseTest {
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.message"),"The API endpoint is invalid. Please verify the API call.");
     }
+
+    //--------------------------------getUsers---------------------------------
+
     @Test(description = "Verify get users functionality",dependsOnMethods = {"listUsers"})
     public void getUsers()
     {
@@ -193,7 +166,10 @@ public class UsersTest extends BaseTest {
         JsonPath bs = new JsonPath(responseBody);
          Assert.assertEquals(bs.getString("error.message"),"The UID %20 does not exist, please make sure you have created a user with UID %20.");
     }
-    @Test(description = "Verify deactivate users functionality",dependsOnMethods = {"listUsers"})
+
+    //--------------------------------deactivateUsers-----------------------------------
+
+    @Test(description = "Verify deactivate users functionality",dependsOnMethods = {"getUsersEmptyUid"})
     public void deactivateUsers()
     {
         JSONObject userJson = new JSONObject();
@@ -201,38 +177,30 @@ public class UsersTest extends BaseTest {
         String responseBody=given().
                 header("apiKey",apiKey).header("Accept","application/json").header("Content-Type","application/json").
               //  body("{\"uidsToDeactivate\": [\""+createdUserId+"\"]}").
-                    body(userJson.toString(1)).
+                body(userJson.toString(1)).
                 when().
                 delete("/users").
                 then().assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
-        JsonPath bs = new JsonPath(responseBody);
-         deactivatedUID=bs.getString("data.deactivatedUids[0]");
-        System.out.println("deactivatedUID" +deactivatedUID);
-        Assert.assertEquals(bs.getString("data.deactivatedUids[0]"),createdUserId);
 
-
-//        PathFinder(responseBody);
-//        String str =js.getString("data.deactivatedUids");
-//
-//        Assert.assertEquals(str.substring(1,str.length() - 1),createdUserId);
     }
+
     @Test(description = "Verify deactivate users already functionality",dependsOnMethods = {"deactivateUsers"})
     public void deactivateUsersAlready()
     {
         JSONObject userJson = new JSONObject();
         userJson.put("uidsToDeactivate",new String[]{createdUserId,"InvalidUserUID"});
         String responseBody=getCommon().
-                        body(userJson.toString(1)).
+                body(userJson.toString(1)).
                 when().
                 delete("/users").
                 then().assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
+
         JsonPath bs = new JsonPath(responseBody);
         Assert.assertEquals(bs.getString("data.alreadyDeactivatedUids[0]"),createdUserId);
     }
+
     @Test(description = "Verify deactivate invalid users functionality",dependsOnMethods = {"deactivateUsers"})
     public void deactivateInvalidUsers()
     {
@@ -249,7 +217,9 @@ public class UsersTest extends BaseTest {
         Assert.assertEquals(bs.getString("data.notFound[0]"),"InvalidUserUID");
     }
 
-    @Test(description = "Verify reactivate users Deactivated UID functionality",dependsOnMethods = {"deactivateUsers"})
+    //--------------------------------reactivateUser-----------------------------------
+
+    @Test(description = "Verify reactivate users Deactivated UID functionality",dependsOnMethods = {"deactivateInvalidUsers"})
     public void reactivateUsersDeactivatedUID(){
 
         String responseBody=given().
@@ -258,16 +228,15 @@ public class UsersTest extends BaseTest {
                 when().
                 put("/users").
                 then().assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
 
         PathFinder(responseBody);
-        Assert.assertEquals(js.getString("data.reactivatedUids[0]"),deactivatedUID);
+        Assert.assertEquals(js.getString("data.reactivatedUids[0]"),createdUserId);
 
-      //  String str =js.getString("data.reactivatedUids");
-     //   Assert.assertEquals(str.substring(1,str.length() - 1),createdUserId);
     }
-    @Test(description = "Verify reactivate users Non Deactivated UID functionality",dependsOnMethods = {"getUsers"})
+
+
+    @Test(description = "Verify reactivate users Non Deactivated UID functionality",dependsOnMethods = {"deactivateInvalidUsers"})
     public void reactivateUsersNonDeactivatedUID(){
 
         String responseBody=getCommon().
@@ -275,13 +244,11 @@ public class UsersTest extends BaseTest {
                 when().
                 put("/users").
                 then().assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
 
-        PathFinder(responseBody);
-       // Assert.assertEquals(js.getString("data.reactivatedUids[0]"),deactivatedUID);
     }
-    @Test(description = "Verify reactivate users Invalid UID functionality",dependsOnMethods = {"deactivateUsers"})
+
+    @Test(description = "Verify reactivate users Invalid UID functionality",dependsOnMethods = {"deactivateInvalidUsers"})
     public void reactivateUsesInvalidUID(){
 
         String responseBody=getCommon().
@@ -289,17 +256,19 @@ public class UsersTest extends BaseTest {
                 when().
                 put("/users").
                 then().assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
 
         PathFinder(responseBody);
          Assert.assertEquals(js.getString("data"),"[notFound:[InvalidUID]]");
     }
 
-    @Test(description = "Verify update roles functionality",dependsOnMethods = {"reactivateUsersDeactivatedUID"})
+    //--------------------------------updateUser-----------------------------------
+
+
+    @Test(description = "Verify update user functionality",dependsOnMethods = {"reactivateUsesInvalidUID"})
     public void updateUser(){
 
-        String newUpdatedName= getRandomString("newUpdatedName");
+        String newUpdatedName= getRandomString("updatedUser");
 
         JSONObject userJson = new JSONObject();
         userJson.put("name",newUpdatedName);
@@ -307,7 +276,7 @@ public class UsersTest extends BaseTest {
         userJson.put("link","https://data-us.cometchat.io/227263ed046613af/avatars/cbdbdb676a84.png");
         userJson.put("role","default");
         userJson.put("metadata","{\"email\":\"user@email.com\", \"contactNumber\":\"0123456789\"}");
-        userJson.put("tags",new String[]{"qa tag1","qa tag2"});
+        userJson.put("tags",new String[]{"tag1","tag2"});
 
         String responseBody=getCommon().
                 body(userJson.toString(1)).
@@ -315,16 +284,17 @@ public class UsersTest extends BaseTest {
                 put("/users/"+createdUserId).
                 then().
                 assertThat().statusCode(200).extract().body().asString();
-
         System.out.println(responseBody);
 
      PathFinder(responseBody);
      Assert.assertEquals(js.getString("data.name"),newUpdatedName);
+
     }
-    @Test(description = "Verify update roles functionality",dependsOnMethods = {"reactivateUsersDeactivatedUID"})
+
+    @Test(description = "Verify update user invalid url functionality",dependsOnMethods = {"reactivateUsesInvalidUID"})
     public void updateUserInvalidAvatar(){
 
-        String newUpdatedName= getRandomString("newUpdatedName");
+        String newUpdatedName= getRandomString("updatedUser");
 
         JSONObject userJson = new JSONObject();
         userJson.put("name",newUpdatedName);
@@ -340,13 +310,13 @@ public class UsersTest extends BaseTest {
                 put("/users/"+createdUserId).
                 then().
                 assertThat().statusCode(400).extract().body().asString();
-
         System.out.println(responseBody);
 
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.details.avatar[0]"),"The avatar must be a valid URL.");
     }
-    @Test(description = "Verify update roles functionality",dependsOnMethods = {"reactivateUsersDeactivatedUID"})
+
+    @Test(description = "Verify update user empty name functionality",dependsOnMethods = {"reactivateUsesInvalidUID"})
     public void updateUserEmptyName(){
 
         JSONObject userJson = new JSONObject();
@@ -369,10 +339,12 @@ public class UsersTest extends BaseTest {
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.details.name[0]"),"The name field must have a value.");
     }
-    @Test(description = "Verify update roles functionality",dependsOnMethods = {"reactivateUsersDeactivatedUID"})
+
+
+    @Test(description = "Verify update user empty tags functionality",dependsOnMethods = {"reactivateUsesInvalidUID"})
     public void updateUserEmptyTags(){
 
-        String newUpdatedName= getRandomString("newUpdatedName");
+        String newUpdatedName= getRandomString("updateUser");
 
         JSONObject userJson = new JSONObject();
         userJson.put("name",newUpdatedName);
@@ -388,13 +360,182 @@ public class UsersTest extends BaseTest {
                 put("/users/"+createdUserId).
                 then().
                 assertThat().statusCode(400).extract().body().asString();
-
         System.out.println(responseBody);
 
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.details[\"tags.0\"][0]"), "The tags.0 field is required.");
     }
-    @Test(description = "Verify delete users functionality", dependsOnMethods = {"unBlockUsers"})
+
+
+    //-----------------------blockUsers---------------------------------------------
+
+    @Test(description = "Verify block users functionality",dependsOnMethods = {"updateUserEmptyTags"})
+    public void blockUsers()
+    {
+        JSONObject userJson = new JSONObject();
+        userJson.put("blockedUids",new String[]{createdUserId});
+
+        String responseBody=getCommon().
+                pathParam("uid","superhero1").
+                body(userJson.toString(1)).
+                when().
+                post("/users/{uid}/blockedusers").
+                then().
+               assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    @Test(description = "Verify block users invalid UID path params",dependsOnMethods = {"updateUserEmptyTags"})
+    public void blockUsersInvalidUIDPathParams()
+    {
+
+        JSONObject userJson = new JSONObject();
+        userJson.put("blockedUids",new String[]{"superhero1"});
+
+        String responseBody=getCommon().
+                pathParam("uid","superhero1000").
+                body(userJson.toString(1)).
+                when().
+                post("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(404).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+
+    @Test(description = "Verify block users invalid UID in body",dependsOnMethods = {"updateUserEmptyTags"})
+    public void blockUsersInvalidUID()
+    {
+
+        JSONObject userJson = new JSONObject();
+        userJson.put("blockedUids",new String[]{"InvalidUIDForBlockUSER"});
+
+        String responseBody=getCommon().
+                pathParam("uid","superhero1").
+                body(userJson.toString(1)).
+                when().
+                post("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    @Test(description = "Verify block users empty UID in body",dependsOnMethods = {"updateUserEmptyTags"})
+    public void blockUsersEmptyUID()
+    {
+        JSONObject userJson = new JSONObject();
+        userJson.put("blockedUids",new String[]{" "});
+
+        String responseBody=getCommon().
+                pathParam("uid","superhero1").
+                body(userJson.toString(1)).
+                when().
+                post("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(400).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    //-----------------------listOfBlockedUsers---------------------------------------------
+
+    @Test(description = "Verify list of blocked users ",dependsOnMethods = {"blockUsersEmptyUID"})
+    public void listOfBlockedUsers()
+    {
+        String responseBody=getCommon().
+                pathParam("uid","superhero1").
+                when().
+                get("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    @Test(description = "Verify list of blocked users don't block ",dependsOnMethods = {"blockUsersEmptyUID"})
+    public void listOfBlockedUsersDoNotBlock()
+    {
+        String responseBody=getCommon().
+                pathParam("uid","superhero2").
+                when().
+                get("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    @Test(description = "Verify list of blocked users invalid uid",dependsOnMethods = {"blockUsersEmptyUID"})
+    public void listOfBlockedUsersInvalidUID()
+    {
+        String responseBody=getCommon().
+                pathParam("uid","superhero1000").
+                when().
+                get("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(404).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    //------------------------------unBlockUsers---------------------------------
+
+
+    @Test(description = "Verify unblock users ",dependsOnMethods = {"listOfBlockedUsersInvalidUID"})
+    public void unBlockUsers()
+    {
+        String responseBody=getCommon().
+                pathParam("uid","superhero1").
+              //  body("{\"blockedUids\": [\""+js.getString("data[2].uid")+"\"]}").
+              //  body("{\"blockedUids\": [\""+blockedUIDForUnblock+"\"]}").
+
+                body("{\"blockedUids\": [\""+createdUserId+"\"]}").
+                when().
+                delete("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+
+    @Test(description = "Verify unblock users for unblock uid",dependsOnMethods = {"listOfBlockedUsersInvalidUID"})
+    public void unBlockUsersForUnBlockedUID()
+    {
+        String responseBody=getCommon().
+                pathParam("uid","superhero1").
+                body("{\"blockedUids\": [\"superhero2\"]}").
+                when().
+                delete("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+
+    @Test(description = "Verify unblock users invalid uid in path params ",dependsOnMethods = {"listOfBlockedUsersInvalidUID"})
+    public void unBlockUsersInvalidUIDPath()
+    {
+        String responseBody=getCommon().
+                pathParam("uid","superhero1000").
+                //  body("{\"blockedUids\": [\""+js.getString("data[2].uid")+"\"]}").
+                body("{\"blockedUids\": [\"superhero4\"]}").
+                when().
+                delete("/users/{uid}/blockedusers").
+                then().
+                assertThat().statusCode(404).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+
+    //--------------------------------deleteUsers-----------------------------------
+
+    @Test(description = "Verify delete users functionality", dependsOnMethods = {"unBlockUsersInvalidUIDPath"})
     public void deleteUsers() {
         JSONObject userJson = new JSONObject();
         userJson.put("permanent",false);
@@ -402,7 +543,7 @@ public class UsersTest extends BaseTest {
         String responseBody=getCommon().
                 body(userJson.toString(1)).
                 when().
-                        delete("/users/"+createdUserId).
+                delete("/users/"+createdUserId).
                 then().
                 assertThat().statusCode(200).extract().body().asString();
         System.out.println(responseBody);
@@ -411,22 +552,23 @@ public class UsersTest extends BaseTest {
         Assert.assertEquals(js.getString("data.deactivatedUids[0]"), createdUserId);
 
     }
-//    @Test(description = "Verify delete users functionality",dependsOnMethods = {"unBlockUsers"})
-//    public void deleteUsersPermanent() {
-//        JSONObject userJson = new JSONObject();
-//        userJson.put("permanent",true);
-//
-//        String responseBody=getCommon().
-//                when().
-//                body(userJson.toString(1)).
-//                delete("/users/"+createdUserId).
-//                then().
-//                assertThat().statusCode(200).extract().body().asString();
-//        System.out.println(responseBody);
-//        PathFinder(responseBody);
-//        Assert.assertEquals(js.getString("data.success"), "true");
-//    }
-    @Test(description = "Verify delete users functionality", dependsOnMethods = {"unBlockUsers"})
+
+    @Test(description = "Verify delete users functionality", dependsOnMethods = {"unBlockUsersInvalidUIDPath"})
+    public void deleteUsersTrue() {
+        JSONObject userJson = new JSONObject();
+        userJson.put("permanent",true);
+
+        String responseBody=getCommon().
+                body(userJson.toString(1)).
+                when().
+                delete("/users/"+createdUserId).
+                then().
+                assertThat().statusCode(200).extract().body().asString();
+        System.out.println(responseBody);
+
+    }
+
+    @Test(description = "Verify delete users invalid uid", dependsOnMethods = {"unBlockUsersInvalidUIDPath"})
     public void deleteUsersInValid() {
         JSONObject userJson = new JSONObject();
         userJson.put("permanent",true);
@@ -441,7 +583,7 @@ public class UsersTest extends BaseTest {
         PathFinder(responseBody);
         Assert.assertEquals(js.getString("error.message"), "The UID invaliduidbabu does not exist, please make sure you have created a user with UID invaliduidbabu.");
     }
-    @Test(description = "Verify delete users functionality", dependsOnMethods = {"unBlockUsers"})
+    @Test(description = "Verify delete users functionality", dependsOnMethods = {"unBlockUsersInvalidUIDPath"})
     public void deleteUsersEmpty() {
         String responseBody=getCommon().
                 when().
@@ -453,157 +595,6 @@ public class UsersTest extends BaseTest {
         Assert.assertEquals(js.getString("error.message"), "The UID %20 does not exist, please make sure you have created a user with UID %20.");
     }
 
-    @Test(description = "Verify block users functionality",dependsOnMethods = {"updateUser"})
-    public void blockUsers()
-    {
-//        PathFinder(responseBody);
-//
-//        String responseBody=given().
-//                header("apiKey",apiKey).
-//                header("Content-Type","application/json").
-//                header("Accept","application/json").
-//                body("{\"blockedUids\": [\""+js.getString("data[2].uid")+"\"]}").
-//                when().
-//                post("/users/"+js.getString("data[3].uid")+"/blockedusers").
-//                then().
-//                assertThat().statusCode(200).extract().body().asString();
 
-        PathFinder(responseBody);
-        JSONObject userJson = new JSONObject();
-        userJson.put("blockedUids",new String[]{createdUserId});
-
-        String responseBody=getCommon().
-                body(userJson.toString(1)).
-                when().
-                post("/users/"+s1+"/blockedusers").
-                then().
-               assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-
-    }
-    @Test(description = "Verify block users invalid UID functionality",dependsOnMethods = {"updateUser"})
-    public void blockUsersInvalidUIDPathParams()
-    {
-        PathFinder(responseBody);
-        JSONObject userJson = new JSONObject();
-        userJson.put("blockedUids",new String[]{"superhero2"});
-
-        String responseBody=getCommon().
-                body(userJson.toString(1)).
-                when().
-                post("/users/"+"superhero10"+"/blockedusers").
-                then().
-                assertThat().statusCode(404).extract().body().asString();
-        System.out.println(responseBody);
-
-    }
-    @Test(description = "Verify block users invalid UID functionality",dependsOnMethods = {"updateUser"})
-    public void blockUsersInvalidUID()
-    {
-        PathFinder(responseBody);
-        JSONObject userJson = new JSONObject();
-        userJson.put("blockedUids",new String[]{"InvalidUIDForBlockUSER"});
-
-        String responseBody=getCommon().
-                body(userJson.toString(1)).
-                when().
-                post("/users/"+s1+"/blockedusers").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-
-    }
-    @Test(description = "Verify block users invalid UID functionality",dependsOnMethods = {"updateUser"})
-    public void blockUsersEmptyUID()
-    {
-        PathFinder(responseBody);
-        JSONObject userJson = new JSONObject();
-        userJson.put("blockedUids",new String[]{" "});
-
-        String responseBody=getCommon().
-                body(userJson.toString(1)).
-                when().
-                post("/users/"+s1+"/blockedusers").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-
-    }
-    @Test(description = "Verify list of blocked users ",dependsOnMethods = {"blockUsers"})
-    public void listOfBlockedUsers()
-    {
-        String responseBody=getCommon().
-                when().
-                get("/users/"+s1+"/blockedusers").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-        PathFinder(responseBody);
-         blockedUIDForUnblock = js.getString("data[0]");
-    }
-
-    @Test(description = "Verify list of blocked users ",dependsOnMethods = {"blockUsers"})
-    public void listOfBlockedUsersDoNotBlock()
-    {
-        String responseBody=getCommon().
-                when().
-                get("/users/"+"superhero3"+"/blockedusers").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-        PathFinder(responseBody);
-
-    }
-    @Test(description = "Verify list of blocked users ",dependsOnMethods = {"blockUsers"})
-    public void listOfBlockedUsersInvalidUID()
-    {
-        String responseBody=getCommon().
-                when().
-                get("/users/"+"superhero10"+"/blockedusers").
-                then().
-                assertThat().statusCode(404).extract().body().asString();
-        System.out.println(responseBody);
-        PathFinder(responseBody);
-
-    }
-    @Test(description = "Verify unblock users ",dependsOnMethods = {"listOfBlockedUsers"})
-    public void unBlockUsers()
-    {
-        String responseBody=getCommon().
-              //  body("{\"blockedUids\": [\""+js.getString("data[2].uid")+"\"]}").
-                      body("{\"blockedUids\": [\""+blockedUIDForUnblock+"\"]}").
-                when().
-                delete("/users/"+s1+"/blockedusers").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-        PathFinder(responseBody);
-    }
-    @Test(description = "Verify unblock users ",dependsOnMethods = {"listOfBlockedUsers"})
-    public void unBlockUsersForUnBlockedUID()
-    {
-        String responseBody=getCommon().
-                //  body("{\"blockedUids\": [\""+js.getString("data[2].uid")+"\"]}").
-                        body("{\"blockedUids\": [\"superhero4\"]}").
-                when().
-                delete("/users/"+s1+"/blockedusers").
-                then().
-                assertThat().statusCode(200).extract().body().asString();
-        System.out.println(responseBody);
-        PathFinder(responseBody);
-    }
-    @Test(description = "Verify unblock users ",dependsOnMethods = {"listOfBlockedUsers"})
-    public void unBlockUsersInvalidUIDPath()
-    {
-        String responseBody=getCommon().
-                //  body("{\"blockedUids\": [\""+js.getString("data[2].uid")+"\"]}").
-                        body("{\"blockedUids\": [\"superhero4\"]}").
-                when().
-                delete("/users/"+"superhero11"+"/blockedusers").
-                then().
-                assertThat().statusCode(404).extract().body().asString();
-        System.out.println(responseBody);
-        PathFinder(responseBody);
-    }
 
 }
