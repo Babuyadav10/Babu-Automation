@@ -8,8 +8,9 @@ import static io.restassured.RestAssured.given;
 public class AuthTokenTest extends BaseTest {
     String createdAuthToken;
     String createdUserName;
-    String mainApiKey= GlobalClassTest.prop.getProperty("apiKey");
+    String mainApiKey = GlobalClassTest.prop.getProperty("apiKey");
     String uid;
+
 
     @Test(description = "verify Auth token functionality")
     public void createAuthToken(){
@@ -108,6 +109,7 @@ public class AuthTokenTest extends BaseTest {
 
     }
 
+
     @Test(description = "Verify get roles functionality",dependsOnMethods = {"reactivateUsers"})
     public void getRoles(){
        /* String responseBody=given().
@@ -172,8 +174,6 @@ public class AuthTokenTest extends BaseTest {
 
 
     }
-
-
-
-
 }
+
+
